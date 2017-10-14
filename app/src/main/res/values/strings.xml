@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">confApp</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_btnAgenda">Agenda</string>
+    <string name="title_btnMap">Mapy</string>
+    <string name="title_btnFacebook">Facebook</string>
+    <string name="title_btnInfoConf">Informajce o konferencji</string>
 </resources>
