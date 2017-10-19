@@ -43,6 +43,18 @@
         </activity>
         <activity android:name=".SplashActivity">
         </activity>
+        <activity android:name=".SearchActivity">
+        </activity>
+        <activity android:name=".SpeakersActivity">
+        </activity>
+        <activity android:name=".ConferenceActivity">
+        </activity>
+        <activity android:name=".SpeakerDatailsActivity">
+        </activity>
+        <activity android:name=".EventsActivity">
+        </activity>
+        <activity android:name=".EventsByNameActivity">
+        </activity>
     </application>
 
 </manifest>

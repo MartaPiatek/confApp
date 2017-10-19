@@ -187,6 +187,34 @@ public class ConfAppDbAdapter {
         );
     }
 
+    public Cursor fetchEventBySpeakerName(String lastName){
+
+        mDb = mDbHelper.getReadableDatabase();
+
+        String table = "tbl_event";
+        String[] columns = null;
+       // String selection = "eventSpeaker LIKE ?";
+        String selection = " eventSpeaker = ?";
+        String[] selectionArgs = new String[] {lastName};
+       // String[] selectionArgs = new String[] { lastName +"%" };
+        String groupBy = null;
+        String having = null;
+        String orderBy = "eventTitle";
+        String limit = null;
+
+     //   String whereClause = "column1 = ? OR column1 = ?";
+     //   String[] whereArgs = new String[] {
+      //          "value1",
+       //         "value2"
+
+
+
+
+        Cursor cursor = mDb.query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit);
+
+        return cursor;
+    }
+
     public Cursor fetchAllSpeakers(){
         Cursor mCursor = mDb.query(TABLE_SPEAKER_NAME, new String[]{COL_SPEAKER_ID,
                         COL_SPEAKER_FIRST_NAME, COL_SPEAKER_LAST_NAME, COL_SPEAKER_TITLE, COL_SPEAKER_DESCRIPTION},

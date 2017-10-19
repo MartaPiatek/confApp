@@ -8,10 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity implements Runnable{
 
-    private Button btnAgenda, btnMap, btnFacebook;
+    private Button btnAgenda, btnMap, btnFacebook, btn_InfoConf;
     private Dialog splashDialog;
     private Handler handler;
 
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements Runnable{
         setContentView(R.layout.activity_main);
 
 
+
+
         showSplashScreen();
         handler = new Handler();
         AsyncTask.execute(this);
@@ -30,19 +33,38 @@ public class MainActivity extends AppCompatActivity implements Runnable{
 
         btnAgenda.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(),AgendaActivity.class);
+                Intent myIntent = new Intent(view.getContext(),SearchActivity.class);
                 startActivity(myIntent);
             }
         });
 
         btnMap = (Button) findViewById(R.id.btnMap);
 
-        btnAgenda.setOnClickListener(new View.OnClickListener() {
+        btnMap.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent myIntent = new Intent(view.getContext(),MapsActivity.class);
                 startActivity(myIntent);
             }
         });
+
+
+        btnFacebook = (Button) findViewById(R.id.btn_Facebook);
+
+        btnFacebook.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+       //         Intent myIntent = new Intent(view.getContext(),CalendarActivity.class);
+         //       startActivity(myIntent);
+            }
+        });
+
+        btn_InfoConf = (Button) findViewById(R.id.btn_InfoConf);
+        btn_InfoConf.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                         Intent myIntent = new Intent(view.getContext(),ConferenceActivity.class);
+                       startActivity(myIntent);
+            }
+        });
+
 
     }
 
@@ -75,4 +97,7 @@ public class MainActivity extends AppCompatActivity implements Runnable{
                             }, 5000
         );
     }
+
+
+
 }
