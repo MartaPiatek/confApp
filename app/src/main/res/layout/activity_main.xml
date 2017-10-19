@@ -6,41 +6,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="pl.martapiatek.confapp.MainActivity"
-    android:orientation="vertical">
+    android:layout_weight="1"
+    >
 
 
-    <Button
-        android:id="@+id/btnAgenda"
-        android:layout_width="match_parent"
+    <Space
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/title_btnAgenda"/>
+        android:layout_weight="0.15"/>
 
-    <Button
-        android:id="@+id/btnMap"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/title_btnMap"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_Facebook"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/title_btnFacebook"/>
+        <Button
+            android:id="@+id/btn_InfoConf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/title_btnInfoConf"/>
 
-    <Button
-        android:id="@+id/btn_InfoConf"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/title_btnInfoConf"/>
+        <Button
+            android:id="@+id/btnNews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Aktualności"/>
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnAgenda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/title_btnAgenda"/>
+
+        <Button
+            android:id="@+id/btnMap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/title_btnMap"/>
+
+        <Button
+            android:id="@+id/btn_Facebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/title_btnFacebook"/>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Button"/>
+        android:layout_weight="0.15"/>
+
 </LinearLayout>
