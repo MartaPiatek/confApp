@@ -25,6 +25,12 @@ public class ConfAppDbAdapter {
     public static final String COL_EVENT_DESCRIPTION = "eventDescription";
     public static final String COL_EVENT_SPEAKER = "eventSpeaker";
 
+    public static final String COL_NEWS_ID = "_id";
+    public static final String COL_NEWS_DATE = "newsDate";
+    public static final String COL_NEWS_TITLE = "newsTitle";
+    public static final String COL_NEWS_CONTENT = "newsContent";
+
+
     //indeksy
 
     public static final int INDEX_SPEAKER_ID = 0;
@@ -40,6 +46,11 @@ public class ConfAppDbAdapter {
     public static final int INDEX_EVENT_DESCRIPTION = INDEX_EVENT_ID + 4;
     public static final int INDEX_EVENT_SPEAKER = INDEX_EVENT_ID + 5;
 
+    public static final int INDEX_NEWS_ID = 0;
+    public static final int INDEX_NEWS_DATE = INDEX_NEWS_ID + 1;
+    public static final int INDEX_NEWS_TITLE = INDEX_NEWS_ID + 2;
+    public static final int INDEX_NEWS_CONTENT = INDEX_NEWS_ID + 3;
+
     //dziennik zdarzeń
     public static final String TAG = "ConfAppDbAdapter";
 
@@ -50,6 +61,7 @@ public class ConfAppDbAdapter {
 
     private static final String TABLE_SPEAKER_NAME = "tbl_speaker";
     private static final String TABLE_EVENT_NAME = "tbl_event";
+    private static final String TABLE_NEWS_NAME = "tbl_news";
 
     private static final int DATABASE_VERSION = 1;
 
@@ -73,6 +85,14 @@ public class ConfAppDbAdapter {
                     COL_EVENT_TITLE + " TEXT, " +
                     COL_EVENT_DESCRIPTION + " TEXT, " +
                     COL_EVENT_SPEAKER + " TEXT ); "
+            ;
+
+    private static final String CREATE_TABLE_NEWS =
+            "CREATE TABLE if not exists " + TABLE_NEWS_NAME + " ( " +
+                    COL_NEWS_ID + " INTEGER PRIMARY KEY autoincrement, " +
+                    COL_NEWS_DATE + " TEXT, " +
+                    COL_NEWS_TITLE + " TEXT, " +
+                    COL_NEWS_CONTENT + " TEXT ); "
             ;
 
 
@@ -107,6 +127,9 @@ public class ConfAppDbAdapter {
 
             Log.w(TAG, CREATE_TABLE_EVENT);
             db.execSQL(CREATE_TABLE_EVENT);
+
+            Log.w(TAG, CREATE_TABLE_NEWS);
+            db.execSQL(CREATE_TABLE_NEWS);
         }
 
         @Override
@@ -116,6 +139,7 @@ public class ConfAppDbAdapter {
                     newVersion + " , co powoduje wyczyszczenie zawartości bazy danych.");
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_SPEAKER_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_EVENT_NAME);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_NEWS_NAME);
             onCreate(db);
         }
     }
@@ -148,6 +172,14 @@ public class ConfAppDbAdapter {
         values.put(COL_EVENT_DESCRIPTION, description);
         values.put(COL_EVENT_SPEAKER, speaker);
         mDb.insert(TABLE_EVENT_NAME, null, values);
+    }
+
+    public void createNews( String date, String title, String content){
+        ContentValues values = new ContentValues();
+        values.put(COL_NEWS_DATE, date);
+        values.put(COL_NEWS_TITLE, title);
+        values.put(COL_NEWS_CONTENT, content);
+        mDb.insert(TABLE_NEWS_NAME, null, values);
     }
 
     // ODCZYT
@@ -229,6 +261,16 @@ public class ConfAppDbAdapter {
         Cursor mCursor = mDb.query(TABLE_EVENT_NAME, new String[]{COL_EVENT_ID,
                         COL_EVENT_DATE, COL_EVENT_LOCATION, COL_EVENT_TITLE, COL_EVENT_DESCRIPTION, COL_EVENT_SPEAKER},
                 null, null, null, null, COL_EVENT_ID);
+        if(mCursor != null)
+            mCursor.moveToFirst();
+
+        return mCursor;
+    }
+
+    public Cursor fetchAllNews(){
+        Cursor mCursor = mDb.query(TABLE_NEWS_NAME, new String[]{COL_NEWS_ID,
+                        COL_NEWS_DATE, COL_NEWS_TITLE, COL_NEWS_CONTENT},
+                null, null, null, null, COL_NEWS_ID);
         if(mCursor != null)
             mCursor.moveToFirst();
 
