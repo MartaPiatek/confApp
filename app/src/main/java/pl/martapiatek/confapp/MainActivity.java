@@ -12,7 +12,7 @@ import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity implements Runnable{
 
-    private Button btnAgenda, btnMap, btnFacebook, btn_InfoConf;
+    private Button btnAgenda, btnMap, btnFacebook, btn_InfoConf, btnNews;
     private Dialog splashDialog;
     private Handler handler;
 
@@ -60,11 +60,18 @@ public class MainActivity extends AppCompatActivity implements Runnable{
         btn_InfoConf = (Button) findViewById(R.id.btn_InfoConf);
         btn_InfoConf.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                         Intent myIntent = new Intent(view.getContext(),ConferenceActivity.class);
+                         Intent myIntent = new Intent(MainActivity.this,ConferenceActivity.class);
                        startActivity(myIntent);
             }
         });
 
+        btnNews = (Button) findViewById(R.id.btnNews);
+        btnNews.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this,NewsActivity.class);
+                startActivity(myIntent);
+            }
+        });
 
     }
 
