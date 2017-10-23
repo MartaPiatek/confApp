@@ -1,7 +1,12 @@
 package pl.martapiatek.confapp;
 
+import android.content.Intent;
+import android.location.Location;
+import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -13,6 +18,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private Button btnNavigation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +29,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+        btnNavigation = (Button) findViewById(R.id.btnNavigation);
+        btnNavigation.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                    Uri gmmIntentUri = Uri.parse("google.navigation:q=Politechnika+Wrocławska,+Wrocław+Polska");
+                   Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                 mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
+            }
+        });
     }
 
 
@@ -39,8 +57,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng pwr = new LatLng(51.107138, 17.062453);
+        mMap.addMarker(new MarkerOptions().position(pwr).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(pwr));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(pwr,16));
+
+
+
     }
 }

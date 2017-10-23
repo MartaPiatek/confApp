@@ -43,8 +43,6 @@
         </activity>
         <activity android:name=".SplashActivity">
         </activity>
-        <activity android:name=".SearchActivity">
-        </activity>
         <activity android:name=".SpeakersActivity">
         </activity>
         <activity android:name=".ConferenceActivity">
