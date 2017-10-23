@@ -1,19 +1,25 @@
 package pl.martapiatek.confapp;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements Runnable{
 
     private Button btnAgenda, btnMap, btnFacebook, btn_InfoConf, btnNews;
-    private Dialog splashDialog;
+    private Dialog splashDialog, dialog;
     private Handler handler;
 
 
@@ -33,8 +39,10 @@ public class MainActivity extends AppCompatActivity implements Runnable{
 
         btnAgenda.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(),SearchActivity.class);
+
+                Intent myIntent = new Intent(view.getContext(),AgendaActivity.class);
                 startActivity(myIntent);
+
             }
         });
 
@@ -101,8 +109,35 @@ public class MainActivity extends AppCompatActivity implements Runnable{
                                 public void run() {
                                     dismissSplashScreen();
                                 }
-                            }, 5000
+                            }, 1000
         );
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        dialog = new Dialog(this, R.style.Theme_AppCompat_Dialog_Alert);
+        dialog.setContentView(R.layout.dialog);
+
+        Button btnYes =  dialog.findViewById(R.id.btnYes);
+
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+               finish();
+            }
+        });
+
+        Button btnNo =  dialog.findViewById(R.id.btnNo);
+
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.setCancelable(false);
+        dialog.show();
+
     }
 
 
