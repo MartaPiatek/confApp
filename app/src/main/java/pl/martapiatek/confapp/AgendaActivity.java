@@ -27,16 +27,19 @@ public class AgendaActivity extends AppCompatActivity {
         //dodaj przykładowe dane
       //  insertSomeSpeakers();
 
-       Cursor cursor = mDbAdapter.fetchAllEvents();
+     //  Cursor cursor = mDbAdapter.fetchAllEvents();
 
-     //   Cursor cursor = mDbAdapter.fetchEventDate();
+        Cursor cursor = mDbAdapter.fetchAllDates();
 
         // z kolumn zdefiniowanych w bazie danych
         String[] from = new String[]{
 
-                ConfAppDbAdapter.COL_EVENT_DATE, ConfAppDbAdapter.COL_EVENT_LOCATION,
-                ConfAppDbAdapter.COL_EVENT_TITLE, ConfAppDbAdapter.COL_EVENT_DESCRIPTION,
-                ConfAppDbAdapter.COL_EVENT_SPEAKER
+                ConfAppDbAdapter.COL_EVENT_DATE
+                //,
+             //   ConfAppDbAdapter.COL_EVENT_LOCATION,
+             //   ConfAppDbAdapter.COL_EVENT_TITLE,
+             //   ConfAppDbAdapter.COL_EVENT_SPEAKER
+
         };
 
         // do identyfikatorów widoków w układzie graficznym
@@ -62,6 +65,57 @@ public class AgendaActivity extends AppCompatActivity {
 
         mListView.setAdapter(mCursorAdapter);
 
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                                             @Override
+                                             public void onItemClick(AdapterView<?> parent, View view, final int masterListPosition, long id) {
+ // TODO Wyświetlać listę w nowym activity, aby można było cofnąć się o poziom
+                                                 // TODO Zrobić przejście do event details
+
+                                                 Event event =  mDbAdapter.fetchEventById(getIdFromPosition(masterListPosition));
+                                                 String eventDate = event.getDate();
+
+                                                Cursor mcursor =  mDbAdapter.fetchEventByDate(eventDate);
+//
+                                                 // z kolumn zdefiniowanych w bazie danych
+                                                 String[] from = new String[]{
+
+                                                         ConfAppDbAdapter.COL_EVENT_DATE
+                                                         ,
+                                                            ConfAppDbAdapter.COL_EVENT_LOCATION,
+                                                            ConfAppDbAdapter.COL_EVENT_TITLE,
+                                                            ConfAppDbAdapter.COL_EVENT_SPEAKER
+
+                                                 };
+
+                                                 // do identyfikatorów widoków w układzie graficznym
+                                                 int[] to = new int[]{
+                                                         R.id.row_date,
+                                                         R.id.row_location,
+                                                         R.id.row_title,
+                                                         R.id.row_speakerName
+
+
+                                                 };
+
+                                                 mCursorAdapter = new ConfAppSimpleCursorAdapter(
+                                                         // kontekst
+                                                         AgendaActivity.this,
+                                                         // układ graficzny wiersza
+                                                         R.layout.events_rows,
+                                                         // kursor
+                                                         mcursor,
+                                                         // z kolumn zdefiniowanych w bazie danych
+                                                         from,
+                                                         // do identyfikatorów widoków w układzie graficznym
+                                                         to,
+                                                         // znacznik - nieużywany
+                                                         0);
+
+                                                 mListView.setAdapter(mCursorAdapter);
+                                             }
+                                         }
+        );
 
     } // onCreate
 

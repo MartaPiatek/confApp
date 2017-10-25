@@ -30,6 +30,10 @@ public class ConfAppDbAdapter {
     public static final String COL_NEWS_TITLE = "newsTitle";
     public static final String COL_NEWS_CONTENT = "newsContent";
 
+    public static final String COL_NOTE_ID = "_id";
+    public static final String COL_NOTE_DATE = "noteDate";
+    public static final String COL_NOTE_TITLE = "noteTitle";
+    public static final String COL_NOTE_CONTENT = "noteContent";
 
     //indeksy
 
@@ -51,6 +55,11 @@ public class ConfAppDbAdapter {
     public static final int INDEX_NEWS_TITLE = INDEX_NEWS_ID + 2;
     public static final int INDEX_NEWS_CONTENT = INDEX_NEWS_ID + 3;
 
+    public static final int INDEX_NOTE_ID = 0;
+    public static final int INDEX_NOTE_DATE = INDEX_NOTE_ID + 1;
+    public static final int INDEX_NOTE_TITLE = INDEX_NOTE_ID + 2;
+    public static final int INDEX_NOTE_CONTENT = INDEX_NOTE_ID + 3;
+
     //dziennik zdarzeń
     public static final String TAG = "ConfAppDbAdapter";
 
@@ -62,6 +71,7 @@ public class ConfAppDbAdapter {
     private static final String TABLE_SPEAKER_NAME = "tbl_speaker";
     private static final String TABLE_EVENT_NAME = "tbl_event";
     private static final String TABLE_NEWS_NAME = "tbl_news";
+    private static final String TABLE_NOTE_NAME = "tbl_note";
 
     private static final int DATABASE_VERSION = 1;
 
@@ -93,6 +103,14 @@ public class ConfAppDbAdapter {
                     COL_NEWS_DATE + " TEXT, " +
                     COL_NEWS_TITLE + " TEXT, " +
                     COL_NEWS_CONTENT + " TEXT ); "
+            ;
+
+    private static final String CREATE_TABLE_NOTE =
+            "CREATE TABLE if not exists " + TABLE_NOTE_NAME + " ( " +
+                    COL_NOTE_ID + " INTEGER PRIMARY KEY autoincrement, " +
+                    COL_NOTE_DATE + " TEXT, " +
+                    COL_NOTE_TITLE + " TEXT, " +
+                    COL_NOTE_CONTENT + " TEXT ); "
             ;
 
 
@@ -130,6 +148,9 @@ public class ConfAppDbAdapter {
 
             Log.w(TAG, CREATE_TABLE_NEWS);
             db.execSQL(CREATE_TABLE_NEWS);
+
+            Log.w(TAG, CREATE_TABLE_NOTE);
+            db.execSQL(CREATE_TABLE_NOTE);
         }
 
         @Override
@@ -140,6 +161,7 @@ public class ConfAppDbAdapter {
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_SPEAKER_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_EVENT_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_NEWS_NAME);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_NOTE_NAME);
             onCreate(db);
         }
     }
@@ -182,6 +204,14 @@ public class ConfAppDbAdapter {
         mDb.insert(TABLE_NEWS_NAME, null, values);
     }
 
+    public void createNote( String date, String title, String content){
+        ContentValues values = new ContentValues();
+        values.put(COL_NOTE_DATE, date);
+        values.put(COL_NOTE_TITLE, title);
+        values.put(COL_NOTE_CONTENT, content);
+        mDb.insert(TABLE_NOTE_NAME, null, values);
+    }
+
     // ODCZYT
     public Speaker fetchSpeakerById(int id) {
 
@@ -219,6 +249,53 @@ public class ConfAppDbAdapter {
         );
     }
 
+    public Cursor fetchEventByDate(String date) {
+
+        Cursor cursor = mDb.query(TABLE_EVENT_NAME, new String[]{COL_EVENT_ID,
+                        COL_EVENT_DATE, COL_EVENT_LOCATION, COL_EVENT_TITLE,
+                        COL_EVENT_DESCRIPTION, COL_EVENT_SPEAKER}, COL_EVENT_DATE + "=?",
+                new String[]{String.valueOf(date)}, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+      /*  return new Event(
+                cursor.getInt(INDEX_EVENT_ID),
+                cursor.getString(INDEX_EVENT_DATE),
+                cursor.getString(INDEX_EVENT_LOCATION),
+                cursor.getString(INDEX_EVENT_TITLE),
+                cursor.getString(INDEX_EVENT_DESCRIPTION),
+                cursor.getString(INDEX_EVENT_SPEAKER)
+        );*/
+        return cursor;
+    }
+
+
+ /*   public Cursor fetchEventDate(){
+
+        mDb = mDbHelper.getReadableDatabase();
+
+        Cursor cursor = mDb.query(TABLE_EVENT_NAME, new String[]{COL_EVENT_ID,
+                        COL_EVENT_DATE, COL_EVENT_LOCATION, COL_EVENT_TITLE, COL_EVENT_DESCRIPTION, COL_EVENT_SPEAKER},
+                null, null, null, null, COL_EVENT_ID);
+        if(cursor != null)
+            cursor.moveToFirst();
+        return cursor;
+    }
+*/
+
+
+    public Cursor fetchAllDates(){
+
+        String q = "SELECT " + COL_EVENT_ID +" , "+ COL_EVENT_DATE +" FROM tbl_event GROUP BY "+ COL_EVENT_DATE ;
+       Cursor mCursor = mDb.rawQuery(q, null);
+
+        if(mCursor != null)
+            mCursor.moveToFirst();
+
+        return mCursor;
+    }
+
+
     public Cursor fetchEventBySpeakerName(String lastName){
 
         mDb = mDbHelper.getReadableDatabase();
@@ -239,10 +316,9 @@ public class ConfAppDbAdapter {
       //          "value1",
        //         "value2"
 
-
-
-
         Cursor cursor = mDb.query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit);
+
+
 
         return cursor;
     }
@@ -260,7 +336,7 @@ public class ConfAppDbAdapter {
     public Cursor fetchAllEvents(){
         Cursor mCursor = mDb.query(TABLE_EVENT_NAME, new String[]{COL_EVENT_ID,
                         COL_EVENT_DATE, COL_EVENT_LOCATION, COL_EVENT_TITLE, COL_EVENT_DESCRIPTION, COL_EVENT_SPEAKER},
-                null, null, null, null, COL_EVENT_ID);
+                null, null, null, null,  COL_EVENT_DATE);
         if(mCursor != null)
             mCursor.moveToFirst();
 
@@ -271,6 +347,16 @@ public class ConfAppDbAdapter {
         Cursor mCursor = mDb.query(TABLE_NEWS_NAME, new String[]{COL_NEWS_ID,
                         COL_NEWS_DATE, COL_NEWS_TITLE, COL_NEWS_CONTENT},
                 null, null, null, null, COL_NEWS_ID);
+        if(mCursor != null)
+            mCursor.moveToFirst();
+
+        return mCursor;
+    }
+
+    public Cursor fetchAllNotes(){
+        Cursor mCursor = mDb.query(TABLE_NOTE_NAME, new String[]{COL_NOTE_ID,
+                        COL_NOTE_DATE, COL_NOTE_TITLE, COL_NOTE_CONTENT},
+                null, null, null, null, COL_NOTE_ID);
         if(mCursor != null)
             mCursor.moveToFirst();
 
