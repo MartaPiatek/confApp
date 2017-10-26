@@ -18,10 +18,14 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements Runnable{
 
-    private Button btnAgenda, btnMap, btnFacebook, btn_InfoConf, btnNews;
+    private Button btnAgenda, btnMap, btnFacebook, btn_InfoConf, btnNews, btnNotes;
     private Dialog splashDialog, dialog;
     private Handler handler;
 
+
+
+
+    private String m_Text = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,9 @@ public class MainActivity extends AppCompatActivity implements Runnable{
             public void onClick(View view) {
        //         Intent myIntent = new Intent(view.getContext(),CalendarActivity.class);
          //       startActivity(myIntent);
+
+
+
             }
         });
 
@@ -77,6 +84,14 @@ public class MainActivity extends AppCompatActivity implements Runnable{
         btnNews.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent myIntent = new Intent(MainActivity.this,NewsActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
+        btnNotes = (Button) findViewById(R.id.btn_Notes);
+        btnNotes.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this,NotesActivity.class);
                 startActivity(myIntent);
             }
         });
@@ -135,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements Runnable{
             }
         });
 
-        dialog.setCancelable(false);
+     //   dialog.setCancelable(false);
         dialog.show();
 
     }

@@ -70,9 +70,9 @@
             android:text="@string/title_btnMap"/>
 
         <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
 
         <Button
             android:id="@+id/btn_Facebook"
@@ -80,6 +80,22 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/title_btnFacebook"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btn_Notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Moje notatki"/>
 
         <Space
             android:layout_width="match_parent"

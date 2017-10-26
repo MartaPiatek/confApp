@@ -9,51 +9,48 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
-public class AgendaActivity extends AppCompatActivity {
+public class NotesActivity extends AppCompatActivity {
+
     private ListView mListView;
     private ConfAppDbAdapter mDbAdapter;
     private ConfAppSimpleCursorAdapter mCursorAdapter;
+    private ImageButton imageBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agenda);
+        setContentView(R.layout.activity_notes);
 
-        mListView = (ListView) findViewById(R.id.agenda_list_view);
+        mListView = (ListView) findViewById(R.id.notes_list_view);
         mListView.setDivider(null);
         mDbAdapter = new ConfAppDbAdapter(this);
         mDbAdapter.open();
 
         //dodaj przykładowe dane
-      //  insertSomeSpeakers();
+        insertSomeNotes();
 
-     //  Cursor cursor = mDbAdapter.fetchAllEvents();
-
-        Cursor cursor = mDbAdapter.fetchAllDates();
+        Cursor cursor = mDbAdapter.fetchAllNotes();
 
         // z kolumn zdefiniowanych w bazie danych
         String[] from = new String[]{
-
-                ConfAppDbAdapter.COL_EVENT_DATE
-                //,
-             //   ConfAppDbAdapter.COL_EVENT_LOCATION,
-             //   ConfAppDbAdapter.COL_EVENT_TITLE,
-             //   ConfAppDbAdapter.COL_EVENT_SPEAKER
+                ConfAppDbAdapter.COL_NOTE_DATE, ConfAppDbAdapter.COL_NOTE_TITLE,
+                ConfAppDbAdapter.COL_NOTE_CONTENT
 
         };
 
         // do identyfikatorów widoków w układzie graficznym
         int[] to = new int[]{
-                R.id.row_agendaDay
-
+                R.id.row_notesDate,
+                R.id.row_notesTitle,
+                R.id.row_notesContent
 
         };
 
         mCursorAdapter = new ConfAppSimpleCursorAdapter(
                 // kontekst
-                AgendaActivity.this,
+                NotesActivity.this,
                 // układ graficzny wiersza
-                R.layout.agenda_rows,
+                R.layout.notes_rows,
                 // kursor
                 cursor,
                 // z kolumn zdefiniowanych w bazie danych
@@ -70,19 +67,22 @@ public class AgendaActivity extends AppCompatActivity {
                                              @Override
                                              public void onItemClick(AdapterView<?> parent, View view, final int masterListPosition, long id) {
 
-                                                 Event event =  mDbAdapter.fetchEventById(getIdFromPosition(masterListPosition));
-                                                 String eventDate = event.getDate();
 
+                                                 Speaker speaker =  mDbAdapter.fetchSpeakerById(getIdFromPosition(masterListPosition));
 
-
-
-                                                 Intent myIntent = new Intent(view.getContext(),EventsByDayActivity.class);
-                                                 myIntent.putExtra("EVENT_DATE", event.getDate());
+                                                 Intent myIntent = new Intent(view.getContext(),SpeakerDatailsActivity.class);
+                                                 myIntent.putExtra("SPEAKER_TITLE", speaker.getTitle());
+                                                 myIntent.putExtra("SPEAKER_FIRST_NAME", speaker.getFirstName());
+                                                 myIntent.putExtra("SPEAKER_LAST_NAME", speaker.getLastName());
+                                                 myIntent.putExtra("SPEAKER_DESCRIPTION", speaker.getDescription());
 
                                                  startActivity(myIntent);
+
+
                                              }
                                          }
         );
+
 
     } // onCreate
 
@@ -90,7 +90,11 @@ public class AgendaActivity extends AppCompatActivity {
         return (int)mCursorAdapter.getItemId(nC);
     }
 
+    private void insertSomeNotes() {
+        mDbAdapter.createNote("2017-12-23", "Tytuł prezki", "To jest jakas notatka");
 
+
+    }
 
 
 }
