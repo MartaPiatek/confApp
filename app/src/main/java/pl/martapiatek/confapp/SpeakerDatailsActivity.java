@@ -46,8 +46,6 @@ public class SpeakerDatailsActivity extends AppCompatActivity {
         mDbAdapter.open();
 
 
-        ratingBar = (RatingBar) findViewById(R.id.ratingBar); // initiate a rating bar
-        Float ratingNumber = ratingBar.getRating(); // get rating number from a rating bar
 
 
         //dodaj przykładowe dane

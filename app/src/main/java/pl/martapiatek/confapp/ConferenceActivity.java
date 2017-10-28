@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class ConferenceActivity extends AppCompatActivity {
 
-    private Button btnSpeakres, btnEvents, btnEventsByName;
+    private Button btnSpeakers, btnEvents, btnEventsByName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,11 +16,11 @@ public class ConferenceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_conference);
 
 
-        btnSpeakres = (Button) findViewById(R.id.btnSpeakers);
+        btnSpeakers = (Button) findViewById(R.id.btnSpeakers);
 
-        btnSpeakres.setOnClickListener(new View.OnClickListener() {
+        btnSpeakers.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(),SpeakersActivity.class);
+                Intent myIntent = new Intent(getApplicationContext(),SpeakersActivity.class);
                 startActivity(myIntent);
             }
         });

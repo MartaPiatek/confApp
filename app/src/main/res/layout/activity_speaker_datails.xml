@@ -9,16 +9,11 @@
     android:orientation="vertical">
 
 
-    <LinearLayout
+    <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/txtViewSpeakerName"
@@ -30,22 +25,28 @@
             android:textSize="36sp"
             android:textStyle="bold"/>
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-    </LinearLayout>
+    </TableRow>
 
-    <LinearLayout
+    <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_weight="1">
 
-        <Space
+        <TextView
+            android:id="@+id/txtViewSpeakerCompany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:text="Firma"
+            android:textColor="@color/colorFont"
+            android:textSize="24sp"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/txtViewSpeakerDescription"
@@ -55,30 +56,15 @@
             android:text="Opis"
             android:textColor="@color/colorFont"
             android:textSize="24sp"/>
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-    </LinearLayout>
+    </TableRow>
 
     <ListView
         android:id="@+id/events_list_view"
         android:layout_width="match_parent"
         android:layout_height="129dp"
+        android:layout_weight="0.31"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp"
-        tools:listitem="@layout/events_rows"
-        android:layout_weight="0.31"/>
-
-    <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_gravity="center_horizontal"
-        android:background="@color/colorFont"
-        android:numStars="10"
-        android:stepSize="1.0"/>
+        tools:listitem="@layout/events_rows"/>
 
 </LinearLayout>
