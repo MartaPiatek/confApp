@@ -9,6 +9,7 @@
     android:background="@color/colorBackground">
 
     <TextView
+        android:background="@color/colorBackground"
         android:id="@+id/txtViewDialogTitle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -20,6 +21,7 @@
         android:textSize="18sp"/>
 
     <TextView
+        android:background="@color/colorBackground"
         android:id="@+id/txtViewDialogText"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -31,17 +33,20 @@
         android:textSize="14sp"/>
 
     <LinearLayout
+        android:background="@color/colorBackground"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:layout_weight="0.3" >
 
         <Space
+            android:background="@color/colorBackground"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.1"/>
 
         <Button
+
             android:id="@+id/btnYes"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -49,11 +54,13 @@
             android:text="Tak"/>
 
         <Space
+            android:background="@color/colorBackground"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.1"/>
 
         <Button
+
             android:id="@+id/btnNo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -61,6 +68,7 @@
             android:text="Nie"/>
 
         <Space
+            android:background="@color/colorBackground"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.1"/>

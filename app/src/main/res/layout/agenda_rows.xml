@@ -7,16 +7,19 @@
               android:orientation="vertical">
 
     <TableRow
+        android:background="@color/colorBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <View
+            android:background="@color/colorBackground"
             android:id="@+id/row_tab"
             class="android.view.View"
             android:layout_width="10dp"
             android:layout_height="match_parent"/>
 
         <TextView
+
             android:id="@+id/row_agendaDay"
             android:layout_width="match_parent"
             android:layout_height="50dp"

@@ -6,15 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context="pl.martapiatek.confapp.SpeakerDatailsActivity">
+    tools:context="pl.martapiatek.confapp.SpeakerDatailsActivity"
+    android:background="@color/colorBackground">
 
 
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.2
-">
+        android:layout_weight="0.2"
+        android:background="@color/colorBackground">
 
         <TextView
             android:id="@+id/txtViewEventTitle"

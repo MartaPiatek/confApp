@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:background="@color/colorBackgroundMenu"
+
+      tools:showIn="navigation_view">
+
+    <group
+        android:background="@color/colorBackgroundMenu"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_aboutConference"
+            android:icon="@drawable/ic_menu_news"
+            android:title="O konferencji"/>
+        <item
+            android:id="@+id/nav_agenda"
+            android:icon="@drawable/ic_menu_agenda"
+            android:title="Agenda"/>
+        <item
+            android:id="@+id/nav_speakers"
+            android:icon="@drawable/ic_menu_people"
+            android:title="Uczestnicy"/>
+
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@drawable/ic_menu_new"
+            android:title="Aktualności"/>
+
+        <item
+            android:id="@+id/nav_maps"
+            android:icon="@drawable/ic_menu_map"
+            android:title="Mapy"/>
+        <item
+            android:id="@+id/nav_notes"
+            android:icon="@drawable/ic_menu_note"
+            android:title="Notatki"/>
+
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Galeria"/>
+
+        <item
+            android:id="@+id/nav_calendar"
+            android:icon="@drawable/ic_menu_calendar"
+            android:title="Terminarz"/>
+
+        <item
+            android:id="@+id/nav_notification"
+            android:icon="@drawable/ic_menu_notifications"
+            android:title="Notyfikacjie"/>
+
+        <item
+            android:id="@+id/nav_awards"
+            android:icon="@drawable/ic_menu_awards"
+            android:title="Nagrody"/>
+
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_menu_help"
+            android:title="Pomoc"/>
+
+        <item
+            android:id="@+id/nav_contact"
+            android:icon="@drawable/ic_menu_contact"
+            android:title="Kontakt"/>
+
+    </group>
+
+    <item android:title="Media społecznościowe">
+        <menu>
+            <item
+                android:id="@+id/nav_facebook"
+                android:icon="@drawable/ic_menu_facebook"
+                android:title="Facebook"/>
+            <item
+                android:id="@+id/nav_twitter"
+                android:icon="@drawable/ic_menu_twitter"
+                android:title="Twitter"/>
+        </menu>
+    </item>
+
+</menu>

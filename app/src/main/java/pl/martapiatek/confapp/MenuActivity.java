@@ -1,14 +1,5 @@
 package pl.martapiatek.confapp;
 
-import android.content.Intent;
-import android.database.Cursor;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ImageButton;
-import android.widget.ListView;
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -28,27 +19,34 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+public class MenuActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener, Runnable {
+
+    private Dialog splashDialog, dialog;
+    private Handler handler;
 
 
-
-
-public class AgendaActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    private ListView mListView;
-    private ConfAppDbAdapter mDbAdapter;
-    private ConfAppSimpleCursorAdapter mCursorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agenda);
-
+        setContentView(R.layout.activity_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
+        showSplashScreen();
+        handler = new Handler();
+        AsyncTask.execute(this);
 
-
-
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -56,85 +54,19 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
-
-
-
-        mListView = (ListView) findViewById(R.id.agenda_list_view);
-        mListView.setDivider(null);
-        mDbAdapter = new ConfAppDbAdapter(this);
-        mDbAdapter.open();
-
-        //dodaj przykładowe dane
-      //  insertSomeSpeakers();
-
-     //  Cursor cursor = mDbAdapter.fetchAllEvents();
-
-        Cursor cursor = mDbAdapter.fetchAllDates();
-
-        // z kolumn zdefiniowanych w bazie danych
-        String[] from = new String[]{
-
-                ConfAppDbAdapter.COL_EVENT_DATE
-                //,
-             //   ConfAppDbAdapter.COL_EVENT_LOCATION,
-             //   ConfAppDbAdapter.COL_EVENT_TITLE,
-             //   ConfAppDbAdapter.COL_EVENT_SPEAKER
-
-        };
-
-        // do identyfikatorów widoków w układzie graficznym
-        int[] to = new int[]{
-                R.id.row_agendaDay
-
-
-        };
-
-        mCursorAdapter = new ConfAppSimpleCursorAdapter(
-                // kontekst
-                AgendaActivity.this,
-                // układ graficzny wiersza
-                R.layout.agenda_rows,
-                // kursor
-                cursor,
-                // z kolumn zdefiniowanych w bazie danych
-                from,
-                // do identyfikatorów widoków w układzie graficznym
-                to,
-                // znacznik - nieużywany
-                0);
-
-        mListView.setAdapter(mCursorAdapter);
-
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                                             @Override
-                                             public void onItemClick(AdapterView<?> parent, View view, final int masterListPosition, long id) {
-
-                                                 Event event =  mDbAdapter.fetchEventById(getIdFromPosition(masterListPosition));
-                                                 String eventDate = event.getDate();
-
-
-
-
-                                                 Intent myIntent = new Intent(view.getContext(),EventsByDayActivity.class);
-                                                 myIntent.putExtra("EVENT_DATE", event.getDate());
-
-                                                 startActivity(myIntent);
-                                             }
-                                         }
-        );
-
-    } // onCreate
-
-    private int getIdFromPosition(int nC) {
-        return (int)mCursorAdapter.getItemId(nC);
     }
 
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -166,16 +98,16 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
 
         if (id == R.id.nav_agenda) {
 
-            Intent myIntent = new Intent(AgendaActivity.this,AgendaActivity.class);
+            Intent myIntent = new Intent(MenuActivity.this,AgendaActivity.class);
             startActivity(myIntent);
 
         } else if (id == R.id.nav_news) {
 
-            Intent myIntent = new Intent(AgendaActivity.this,NewsActivity.class);
+            Intent myIntent = new Intent(MenuActivity.this,NewsActivity.class);
             startActivity(myIntent);
 
         } else if (id == R.id.nav_speakers) {
-            Intent myIntent = new Intent(AgendaActivity.this,SpeakersActivity.class);
+            Intent myIntent = new Intent(MenuActivity.this,SpeakersActivity.class);
             startActivity(myIntent);
 
         } else if (id == R.id.nav_calendar) {
@@ -196,13 +128,13 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
 
         }else if (id == R.id.nav_maps) {
 
-            Intent myIntent = new Intent(AgendaActivity.this,MapsActivity.class);
+            Intent myIntent = new Intent(MenuActivity.this,MapsActivity.class);
             startActivity(myIntent);
 
         }
         else if (id == R.id.nav_notes) {
 
-            Intent myIntent = new Intent(AgendaActivity.this,NotesActivity.class);
+            Intent myIntent = new Intent(MenuActivity.this,NotesActivity.class);
             startActivity(myIntent);
 
         }
@@ -211,8 +143,8 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         }
         else if (id == R.id.nav_awards) {
 
-            //  Intent myIntent = new Intent(MenuActivity.this,SpeakersActivity.class);
-            //  startActivity(myIntent);
+          //  Intent myIntent = new Intent(MenuActivity.this,SpeakersActivity.class);
+          //  startActivity(myIntent);
 
         }
         else if (id == R.id.nav_awards) {
@@ -227,6 +159,67 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        dismissSplashScreen();
+    }
+
+    private void showSplashScreen() {
+        splashDialog = new Dialog(this, R.style.splash_screen);
+        splashDialog.setContentView(R.layout.activity_splash);
+        splashDialog.setCancelable(false);
+        splashDialog.show();
+    }
+
+    private void dismissSplashScreen() {
+        if (splashDialog != null) {
+            splashDialog.dismiss();
+            splashDialog = null;
+        }
+    }
+    @Override
+    public void run() {
+        handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    dismissSplashScreen();
+                                }
+                            }, 1000
+        );
+    }
+
+ /*   @Override
+    public void onBackPressed() {
+
+        dialog = new Dialog(this, R.style.Theme_AppCompat_Dialog_Alert);
+        dialog.setContentView(R.layout.dialog);
+
+        Button btnYes =  dialog.findViewById(R.id.btnYes);
+
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        Button btnNo =  dialog.findViewById(R.id.btnNo);
+
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        //   dialog.setCancelable(false);
+        dialog.show();
+
+    }*/
 
 
 }

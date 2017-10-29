@@ -11,6 +11,7 @@
 
 
     <ListView
+        android:background="@color/colorBackground"
         android:id="@+id/reminders_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
