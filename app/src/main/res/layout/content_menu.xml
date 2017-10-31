@@ -69,11 +69,11 @@
                 android:layout_weight="1"/>
 
             <Button
-                android:id="@+id/btnMap"
+                android:id="@+id/btnData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/title_btnMap"/>
+                android:text="Załaduj przykładowe dane"/>
 
             <Space
                 android:layout_width="match_parent"
