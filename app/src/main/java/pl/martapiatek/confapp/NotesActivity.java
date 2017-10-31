@@ -62,7 +62,7 @@ public class NotesActivity extends AppCompatActivity {
 
         mListView.setAdapter(mCursorAdapter);
 
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+     /*   mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                                              @Override
                                              public void onItemClick(AdapterView<?> parent, View view, final int masterListPosition, long id) {
@@ -82,7 +82,7 @@ public class NotesActivity extends AppCompatActivity {
                                              }
                                          }
         );
-
+*/
 
     } // onCreate
 

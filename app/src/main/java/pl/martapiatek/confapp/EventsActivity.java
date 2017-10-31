@@ -24,7 +24,7 @@ public class EventsActivity extends AppCompatActivity {
         mDbAdapter.open();
 
         //dodaj przykładowe dane
-        insertSomeEvents();
+      //  insertSomeEvents();
 
         Cursor cursor = mDbAdapter.fetchAllEvents();
 
@@ -88,7 +88,7 @@ public class EventsActivity extends AppCompatActivity {
         return (int)mCursorAdapter.getItemId(nC);
     }
 
-    private void insertSomeEvents() {
+   private void insertSomeEvents() {
         mDbAdapter.createEvent( "2017-02-10" , "Bud A-1", "Aaaaaaaaa", "Jakis opis",
                 "Jan Kowalski");
         mDbAdapter.createEvent( "2017-09-09" , "Bud c-1", "Bbbbbbbbbbbbbb", "Jakis opis",

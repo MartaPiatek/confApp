@@ -27,12 +27,12 @@ public class NewsActivity extends AppCompatActivity {
         mDbAdapter.open();
 
         //dodaj przykładowe dane
-        insertSomeNews();
+     //   insertSomeNews();
 
         Cursor cursor = mDbAdapter.fetchAllNews();
 
             //dodaj przykładowe dane
-            insertSomeNews();
+          //  insertSomeNews();
 
 
         // z kolumn zdefiniowanych w bazie danych
@@ -66,7 +66,7 @@ public class NewsActivity extends AppCompatActivity {
 
         mListView.setAdapter(mCursorAdapter);
 
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      /*  mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                                              @Override
                                              public void onItemClick(AdapterView<?> parent, View view, final int masterListPosition, long id) {
@@ -86,7 +86,7 @@ public class NewsActivity extends AppCompatActivity {
                                              }
                                          }
         );
-
+*/
 
     } // onCreate
 

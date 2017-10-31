@@ -30,26 +30,25 @@ public class SpeakersActivity extends AppCompatActivity {
         mDbAdapter.open();
 
         //dodaj przykładowe dane
-        insertSomeSpeakers();
+      //  insertSomeSpeakers();
 
         Cursor cursor = mDbAdapter.fetchAllSpeakers();
 
         // z kolumn zdefiniowanych w bazie danych
-        String fname = ConfAppDbAdapter.COL_SPEAKER_FIRST_NAME ;
-        String lName = ConfAppDbAdapter.COL_SPEAKER_LAST_NAME ;
-
-        String name = fname + lName;
+;
 
         String[] from = new String[]{
                     ConfAppDbAdapter.COL_SPEAKER_FIRST_NAME,
-                ConfAppDbAdapter.COL_SPEAKER_TITLE, ConfAppDbAdapter.COL_SPEAKER_LAST_NAME,
+                ConfAppDbAdapter.COL_SPEAKER_LAST_NAME,
+                ConfAppDbAdapter.COL_SPEAKER_TITLE,
                      ConfAppDbAdapter.COL_SPEAKER_DESCRIPTION
 
         };
 
         // do identyfikatorów widoków w układzie graficznym
         int[] to = new int[]{
-                R.id.row_person,
+                R.id.row_personFirstName,
+                R.id.row_personLastName,
                 R.id.row_company
 
 

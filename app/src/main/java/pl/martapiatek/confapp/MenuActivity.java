@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,14 +19,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, Runnable {
 
     private Dialog splashDialog, dialog;
     private Handler handler;
-
+    private Button btnData;
+    private ConfAppDbAdapter mDbAdapter;
+    private ConfAppSimpleCursorAdapter mCursorAdapter;
 
 
     @Override
@@ -35,18 +47,44 @@ public class MenuActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
+
+        mDbAdapter = new ConfAppDbAdapter(this);
+        mDbAdapter.open();
+
+
+        btnData = (Button) findViewById(R.id.btnData);
+        btnData.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+
+                //dodaj przykładowe dane
+                insertSomeEvents();
+                insertSomeNews();
+                insertSomeSpeakers();
+
+                //wyswietlanie zindywidualizowanego toasta
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.toast,
+                        (ViewGroup) findViewById(R.id.toast_layout_root));
+
+                ImageView image = (ImageView) layout.findViewById(R.id.image);
+                // image.setImageResource(R.drawable.android);
+                TextView text = (TextView) layout.findViewById(R.id.text);
+                text.setText("Załadowano dane");
+
+                Toast toast = new Toast(getApplicationContext());
+                toast.setGravity(Gravity.BOTTOM, 0, 30);
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setView(layout);
+                toast.show();
+
+            }
+        });
         showSplashScreen();
         handler = new Handler();
         AsyncTask.execute(this);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -221,5 +259,89 @@ public class MenuActivity extends AppCompatActivity
 
     }*/
 
+
+    private void insertSomeEvents() {
+        mDbAdapter.createEvent( "2017-02-10" , "B-2 aud. 100",
+                "Usage of ICP Algorithm for Initial Alignment in B-Splines FFD Image " +
+                        "Registration in Breast Cancer Radiotherapy Planning ",
+                "Estimation of a resected tumor lodge localization after a breast cancer " +
+                        "surgery is a demanding task for the radiotherapy planning. The image registration " +
+                        "techniques can be used to improve the radiotherapy. The initial alignment of two volumes " +
+                        "is an important aspect of medical image registration procedure. We propose usage of the " +
+                        "iterative closest point in two different scenarios: as a initial alignment, replacing intensity " +
+                        "based rigid registration and as a initial transform to speed-up traditional rigid registration " +
+                        "process. Two versions of the algorithm are presented: a point matching between bone structures " +
+                        "and a line matching between volume edges. The correctness and usefulness are evaluated using:" +
+                        " a target registration error, comparison of the computation time and convergence ratios, and " +
+                        "visual inspection. The results demonstrate that the usage of iterative closest point algorithm " +
+                        "significantly improve the initial alignment process in terms of the computation time.",
+                "Marek Wodzinski");
+
+
+        mDbAdapter.createEvent( "2017-02-10" , "B-2 aud. 122",
+                "Computer analysis of normal and pathological vocal \n" +
+                        "folds oscillations from videolaryngostroboscopic \n" +
+                        "images",
+                "Videostroboscopy is a common technique used by phoniatricians for diagnosing vocal" +
+                        " folds status by imaging their oscillations. Implementation of image processing methods " +
+                        "allows to extract qualitative description and quantitative indices. Such an analysis approach" +
+                        " allows to detect glottal pathological changes and monitor the voice quality. Presented analysis " +
+                        "of the videostroboscopic sequences were carried for 12 individuals i.e. 6 patients with diagnosed " +
+                        "vocal nodules and 6 normophonic individuals classified as a control group. Image pre-processing " +
+                        "and image segmentation algorithms were applied to compute the glottal area waveform (GAW) and " +
+                        "the glottovibragram during phonation and to build a novel representation of vocal folds oscillations " +
+                        "which we called the glottocorrelogram. The obtained results confirm that computer analysis and new " +
+                        "representations of the phonation process of the glottis can aid the phoniatricians in diagnosis of " +
+                        "voice disorders.",
+                "Bartosz Kopczyński");
+
+        mDbAdapter.createEvent( "2017-02-11" , "B-2 aud. 100",
+                "Optimal selection of wavelengths for estimation of oxy-, deoxy- hemoglobin and cytochrome-c-oxidase " +
+                        "from time-resolved NIRS measurements  ",
+                "We analyze broadband near-infrared spectroscopic measurements obtained from newborn piglets " +
+                        "subjected to hypoxia-ischemia and we aim to identify optimal wavelength combinations for" +
+                        " monitoring cerebral tissue chromophores. We implement an optimization routine based on the " +
+                        "genetic algorithm to perform a heuristic search for discrete wavelength combinations that can " +
+                        "provide accurate concentration information when benchmarked against the gold standard of 121 wavelengths. The results indicate that it is possible to significantly reduce the number of measurement wavelengths used in conjunction with spectroscopic algorithms and still achieve a high performance in estimating changes in concentrations of oxyhemoglobin, deoxyhemoglobin, and oxidized cytochrome c oxidase. While the use of a 3-wavelength combination leads to mean recovery errors of up to 10%, these errors drop to less than 4% with 4 or 5 wavelengths and to even less than 2% with 8 wavelengths.",
+                "Aleh Sudakou");
+/*
+        mDbAdapter.createEvent( "2017-02-12" , "B-1 aud. 320",
+                " ",
+                "",
+                "");
+
+        mDbAdapter.createEvent( "" , "",
+                " ",
+                "",
+                "");
+*/
+    }
+
+    private void insertSomeNews() {
+
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String date = df.format(Calendar.getInstance().getTime());
+
+        mDbAdapter.createNews( date, "Zmiana sali prezentacji"
+                ,"Zmiana sali prezentacji pt. \"Optimal selection of wavelengths for estimation of oxy-, " +
+                        "deoxy- hemoglobin and cytochrome-c-oxidase from time-resolved NIRS measurements\"");
+
+    }
+
+
+
+    private void insertSomeSpeakers() {
+        mDbAdapter.createSpeaker( "Bartosz", "Kopczyński",
+                "Lodz University of Technology",
+                "");
+        mDbAdapter.createSpeaker( "Aleh", "Sudakou",
+                "Nalecz Institute of Biocybernetics and Biomedical Engineering Polish Academy of Sciences",
+                "");
+        mDbAdapter.createSpeaker( "Marek", " Wodzinski",
+                "AGH University of Science and Technology, Department of Measurement and Electronics",
+                "");
+
+
+    }
 
 }
