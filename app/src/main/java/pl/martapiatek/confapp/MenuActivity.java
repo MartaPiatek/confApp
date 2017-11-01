@@ -48,6 +48,7 @@ public class MenuActivity extends AppCompatActivity
 
 
 
+
         mDbAdapter = new ConfAppDbAdapter(this);
         mDbAdapter.open();
 
@@ -185,13 +186,18 @@ public class MenuActivity extends AppCompatActivity
           //  startActivity(myIntent);
 
         }
-        else if (id == R.id.nav_awards) {
+        else if (id == R.id.nav_aboutConference) {
 
-            //  Intent myIntent = new Intent(MenuActivity.this,SpeakersActivity.class);
-            //  startActivity(myIntent);
+              Intent myIntent = new Intent(MenuActivity.this,ConferenceActivity.class);
+              startActivity(myIntent);
 
         }
+        else if (id == R.id.nav_contact) {
 
+              Intent myIntent = new Intent(MenuActivity.this,ContactActivity.class);
+              startActivity(myIntent);
+
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

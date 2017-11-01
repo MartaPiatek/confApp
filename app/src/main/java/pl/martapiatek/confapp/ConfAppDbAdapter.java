@@ -35,6 +35,15 @@ public class ConfAppDbAdapter {
     public static final String COL_NOTE_TITLE = "noteTitle";
     public static final String COL_NOTE_CONTENT = "noteContent";
 
+
+    public static final String COL_CALENDAR_EVENT_ID = "_id";
+    public static final String COL_CALENDAR_EVENT_DATE = "date";
+    public static final String COL_CALENDAR_EVENT_LOCATION = "location";
+    public static final String COL_CALENDAR_EVENT_TITLE = "eventTitle";
+
+
+
+
     //indeksy
 
     public static final int INDEX_SPEAKER_ID = 0;
@@ -60,6 +69,13 @@ public class ConfAppDbAdapter {
     public static final int INDEX_NOTE_TITLE = INDEX_NOTE_ID + 2;
     public static final int INDEX_NOTE_CONTENT = INDEX_NOTE_ID + 3;
 
+
+    public static final int INDEX_CALENDAR_EVENT_ID = 0;
+    public static final int INDEX_CALENDAR_EVENT_DATE = INDEX_EVENT_ID + 1;
+    public static final int INDEX_CALENDAR_EVENT_LOCATION = INDEX_EVENT_ID + 2;
+    public static final int INDEX_CALENDAR_EVENT_TITLE = INDEX_EVENT_ID + 3;
+
+
     //dziennik zdarzeń
     public static final String TAG = "ConfAppDbAdapter";
 
@@ -72,6 +88,7 @@ public class ConfAppDbAdapter {
     private static final String TABLE_EVENT_NAME = "tbl_event";
     private static final String TABLE_NEWS_NAME = "tbl_news";
     private static final String TABLE_NOTE_NAME = "tbl_note";
+    private static final String TABLE_CALENDAR_NAME = "tbl_calendar";
 
     private static final int DATABASE_VERSION = 1;
 
@@ -113,6 +130,14 @@ public class ConfAppDbAdapter {
                     COL_NOTE_CONTENT + " TEXT ); "
             ;
 
+    private static final String CREATE_TABLE_CALENDAR =
+            "CREATE TABLE if not exists " + TABLE_CALENDAR_NAME + " ( " +
+                    COL_CALENDAR_EVENT_ID + " INTEGER PRIMARY KEY autoincrement, " +
+                    COL_CALENDAR_EVENT_DATE + " TEXT, " +
+                    COL_CALENDAR_EVENT_LOCATION + " TEXT, " +
+                    COL_CALENDAR_EVENT_TITLE + " TEXT ); "
+            ;
+
 
     public ConfAppDbAdapter(Context ctx) {
         mCtx = ctx;
@@ -151,6 +176,9 @@ public class ConfAppDbAdapter {
 
             Log.w(TAG, CREATE_TABLE_NOTE);
             db.execSQL(CREATE_TABLE_NOTE);
+
+            Log.w(TAG, CREATE_TABLE_CALENDAR);
+            db.execSQL(CREATE_TABLE_CALENDAR);
         }
 
         @Override
@@ -162,6 +190,7 @@ public class ConfAppDbAdapter {
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_EVENT_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_NEWS_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_NOTE_NAME);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_CALENDAR_NAME);
             onCreate(db);
         }
     }
@@ -210,6 +239,16 @@ public class ConfAppDbAdapter {
         values.put(COL_NOTE_TITLE, title);
         values.put(COL_NOTE_CONTENT, content);
         mDb.insert(TABLE_NOTE_NAME, null, values);
+    }
+
+
+    public void createCalendarEvent(String date, String location, String title){
+        ContentValues values = new ContentValues();
+        values.put(COL_CALENDAR_EVENT_DATE, date);
+        values.put(COL_CALENDAR_EVENT_LOCATION, location);
+        values.put(COL_CALENDAR_EVENT_TITLE, title);
+
+        mDb.insert(TABLE_CALENDAR_NAME, null, values);
     }
 
     // ODCZYT
@@ -336,6 +375,16 @@ public class ConfAppDbAdapter {
     public Cursor fetchAllEvents(){
         Cursor mCursor = mDb.query(TABLE_EVENT_NAME, new String[]{COL_EVENT_ID,
                         COL_EVENT_DATE, COL_EVENT_LOCATION, COL_EVENT_TITLE, COL_EVENT_DESCRIPTION, COL_EVENT_SPEAKER},
+                null, null, null, null,  COL_EVENT_DATE);
+        if(mCursor != null)
+            mCursor.moveToFirst();
+
+        return mCursor;
+    }
+
+    public Cursor fetchAllCalendarEvents(){
+        Cursor mCursor = mDb.query(TABLE_CALENDAR_NAME, new String[]{COL_CALENDAR_EVENT_ID,
+                        COL_CALENDAR_EVENT_DATE, COL_CALENDAR_EVENT_LOCATION, COL_CALENDAR_EVENT_TITLE},
                 null, null, null, null,  COL_EVENT_DATE);
         if(mCursor != null)
             mCursor.moveToFirst();

@@ -9,20 +9,19 @@
     android:orientation="vertical"
     android:background="@color/colorBackground">
 
-
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
+        android:layout_weight="0.3"
         android:background="@color/colorBackground">
 
         <TextView
             android:id="@+id/txtViewSpeakerName"
-            android:background="@color/colorBackground"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@color/colorBackground"
             android:text="Nazwisko"
             android:textColor="@color/colorFont"
             android:textSize="36sp"
@@ -31,35 +30,35 @@
     </TableRow>
 
     <TableRow
-        android:background="@color/colorBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="0.3"
+        android:background="@color/colorBackground">
 
         <TextView
-            android:background="@color/colorBackground"
             android:id="@+id/txtViewSpeakerCompany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
+            android:background="@color/colorBackground"
             android:text="Firma"
             android:textColor="@color/colorFont"
             android:textSize="24sp"/>
     </TableRow>
 
     <TableRow
-        android:background="@color/colorBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="0.3"
+        android:background="@color/colorBackground">
 
         <TextView
-            android:background="@color/colorBackground"
             android:id="@+id/txtViewSpeakerDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@color/colorBackground"
             android:text="Opis"
             android:textColor="@color/colorFont"
             android:textSize="24sp"/>

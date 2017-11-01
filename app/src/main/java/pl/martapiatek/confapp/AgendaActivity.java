@@ -32,7 +32,7 @@ import android.widget.Button;
 
 
 
-public class AgendaActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class AgendaActivity extends AppCompatActivity {
     private ListView mListView;
     private ConfAppDbAdapter mDbAdapter;
     private ConfAppSimpleCursorAdapter mCursorAdapter;
@@ -44,25 +44,7 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
-
-
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-
-
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mListView = (ListView) findViewById(R.id.agenda_list_view);
         mListView.setDivider(null);
@@ -136,97 +118,8 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_agenda) {
-
-            Intent myIntent = new Intent(AgendaActivity.this,AgendaActivity.class);
-            startActivity(myIntent);
-
-        } else if (id == R.id.nav_news) {
-
-            Intent myIntent = new Intent(AgendaActivity.this,NewsActivity.class);
-            startActivity(myIntent);
-
-        } else if (id == R.id.nav_speakers) {
-            Intent myIntent = new Intent(AgendaActivity.this,SpeakersActivity.class);
-            startActivity(myIntent);
-
-        } else if (id == R.id.nav_calendar) {
-
-        } else if (id == R.id.nav_facebook) {
-
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://www.facebook.com/Students.Science.Conference/?ref=br_rs"));
-            startActivity(browserIntent);
-
-        }else if (id == R.id.nav_twitter) {
-
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://twitter.com/SSCPWr"));
-            startActivity(browserIntent);
-
-        }   else if (id == R.id.nav_help) {
-
-        }else if (id == R.id.nav_maps) {
-
-            Intent myIntent = new Intent(AgendaActivity.this,MapsActivity.class);
-            startActivity(myIntent);
-
-        }
-        else if (id == R.id.nav_notes) {
-
-            Intent myIntent = new Intent(AgendaActivity.this,NotesActivity.class);
-            startActivity(myIntent);
-
-        }
-        else if (id == R.id.nav_notification) {
-
-        }
-        else if (id == R.id.nav_awards) {
-
-            //  Intent myIntent = new Intent(MenuActivity.this,SpeakersActivity.class);
-            //  startActivity(myIntent);
-
-        }
-        else if (id == R.id.nav_awards) {
-
-            //  Intent myIntent = new Intent(MenuActivity.this,SpeakersActivity.class);
-            //  startActivity(myIntent);
-
-        }
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
 
 }
