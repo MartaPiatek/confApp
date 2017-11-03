@@ -21,15 +21,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AgendaActivity"
-
+        <activity
+            android:name=".AgendaActivity"
             android:parentActivityName=".MenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pl.martapiatek.confapp.MenuActivity"/>
-
-
         </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -51,105 +49,105 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pl.martapiatek.confapp.MenuActivity"/>
-
         </activity>
         <activity android:name=".SplashActivity">
-
         </activity>
-
         <activity android:name=".SpeakersActivity">
-
         </activity>
-
-        <activity android:name=".ConferenceActivity"
+        <activity
+            android:name=".ConferenceActivity"
             android:parentActivityName=".MenuActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pl.martapiatek.confapp.MenuActivity"/>
-
         </activity>
-
         <activity android:name=".SpeakerDatailsActivity">
-
         </activity>
-
         <activity android:name=".EventsActivity">
-
         </activity>
-
         <activity android:name=".EventsByNameActivity">
-
         </activity>
-
-        <activity android:name=".NewsActivity"
-                  android:parentActivityName=".MenuActivity"
-                  android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".NewsActivity"
+            android:parentActivityName=".MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pl.martapiatek.confapp.MenuActivity"/>
-
         </activity>
-
-        <activity android:name=".NotesActivity"
-                  android:parentActivityName=".MenuActivity"
-                  android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".NotesActivity"
+            android:parentActivityName=".MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pl.martapiatek.confapp.MenuActivity"/>
-
         </activity>
-
-        <activity android:name=".EventDetailsActivity"
-
+        <activity
+            android:name=".EventDetailsActivity"
             android:parentActivityName=".EventsByDayActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pl.martapiatek.confapp.EventsByDayActivity"/>
-
         </activity>
-
-        <activity android:name=".EventsByDayActivity"
-
+        <activity
+            android:name=".EventsByDayActivity"
             android:parentActivityName=".AgendaActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pl.martapiatek.confapp.AgendaActivity"/>
-
         </activity>
-
-        <activity android:name=".ContactActivity"
-                  android:parentActivityName=".MenuActivity"
-                  android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".ContactActivity"
+            android:parentActivityName=".MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pl.martapiatek.confapp.MenuActivity"/>
-
         </activity>
-
-        <activity android:name=".MailContactActivity"
-                  android:parentActivityName=".ContactActivity"
-                  android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".MailContactActivity"
+            android:parentActivityName=".ContactActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pl.martapiatek.confapp.ContactActivity"/>
-
         </activity>
-
         <activity
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
         </activity>
-
+        <activity
+            android:name=".GalleryActivity"
+            android:label="@string/title_activity_gallery"
+            android:parentActivityName=".MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pl.martapiatek.confapp.MenuActivity"/>
+        </activity>
+        <activity
+            android:name=".FullImageActivity"
+            android:label="@string/title_activity_full_image"
+            android:parentActivityName=".GalleryActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pl.martapiatek.confapp.GalleryActivity"/>
+        </activity>
     </application>
 
 </manifest>

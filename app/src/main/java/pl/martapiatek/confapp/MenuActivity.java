@@ -198,6 +198,12 @@ public class MenuActivity extends AppCompatActivity
               startActivity(myIntent);
 
         }
+        else if (id == R.id.nav_gallery) {
+
+            Intent myIntent = new Intent(MenuActivity.this,GalleryActivity.class);
+            startActivity(myIntent);
+
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
