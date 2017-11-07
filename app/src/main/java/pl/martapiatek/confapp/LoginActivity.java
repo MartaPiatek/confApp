@@ -3,8 +3,10 @@ package pl.martapiatek.confapp;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -38,7 +40,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor>,  Runnable {
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -64,10 +66,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
 
+    private Dialog splashDialog, dialog;
+    private Handler handler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        showSplashScreen();
+        handler = new Handler();
+        AsyncTask.execute(this);
+
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -94,6 +105,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+
     }
 
     private void populateAutoComplete() {
@@ -351,5 +364,39 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
         }
     }
+
+
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        dismissSplashScreen();
+    }
+
+    private void showSplashScreen() {
+        splashDialog = new Dialog(this, R.style.splash_screen);
+        splashDialog.setContentView(R.layout.activity_splash);
+        splashDialog.setCancelable(false);
+        splashDialog.show();
+    }
+
+    private void dismissSplashScreen() {
+        if (splashDialog != null) {
+            splashDialog.dismiss();
+            splashDialog = null;
+        }
+    }
+    @Override
+    public void run() {
+        handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    dismissSplashScreen();
+                                }
+                            }, 5000
+        );
+    }
+
 }
 

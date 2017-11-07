@@ -4,7 +4,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
+    android:background="#ffe0cf"
     android:orientation="vertical">
 
     <Space
@@ -17,8 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.8"
-        android:background="@color/colorBackground"
-        android:src="@drawable/splash"/>
+        android:background="#ffe0cf"
+        android:src="@drawable/splashpeach"/>
 
     <Space
         android:layout_width="match_parent"

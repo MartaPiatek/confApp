@@ -2,6 +2,7 @@ package pl.martapiatek.confapp;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -28,9 +29,10 @@ import android.widget.Toast;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class MenuActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, Runnable {
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     private Dialog splashDialog, dialog;
     private Handler handler;
@@ -81,9 +83,7 @@ public class MenuActivity extends AppCompatActivity
 
             }
         });
-        showSplashScreen();
-        handler = new Handler();
-        AsyncTask.execute(this);
+
 
 
 
@@ -97,7 +97,7 @@ public class MenuActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    @Override
+/*    @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -106,7 +106,7 @@ public class MenuActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
+*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -123,6 +123,19 @@ public class MenuActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+//TODO zrobić 2 warianty językowe PL i EN
+         //   public void changeLanguage(String languageToLoad) {
+                //for language change
+            String languageToLoad = "en"; // your language
+            Locale locale = new Locale(languageToLoad);
+            Locale.setDefault(locale);
+            Configuration config = new Configuration();
+            config.locale = locale;
+            getBaseContext().getResources().updateConfiguration(config,
+                    getBaseContext().getResources().getDisplayMetrics());
+            this.setContentView(R.layout.activity_menu);
+
             return true;
         }
 
@@ -214,37 +227,8 @@ public class MenuActivity extends AppCompatActivity
 
 
 
+
     @Override
-    protected void onPause() {
-        super.onPause();
-        dismissSplashScreen();
-    }
-
-    private void showSplashScreen() {
-        splashDialog = new Dialog(this, R.style.splash_screen);
-        splashDialog.setContentView(R.layout.activity_splash);
-        splashDialog.setCancelable(false);
-        splashDialog.show();
-    }
-
-    private void dismissSplashScreen() {
-        if (splashDialog != null) {
-            splashDialog.dismiss();
-            splashDialog = null;
-        }
-    }
-    @Override
-    public void run() {
-        handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    dismissSplashScreen();
-                                }
-                            }, 1000
-        );
-    }
-
- /*   @Override
     public void onBackPressed() {
 
         dialog = new Dialog(this, R.style.Theme_AppCompat_Dialog_Alert);
@@ -269,7 +253,7 @@ public class MenuActivity extends AppCompatActivity
         //   dialog.setCancelable(false);
         dialog.show();
 
-    }*/
+    }
 
 
     private void insertSomeEvents() {
