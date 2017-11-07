@@ -68,6 +68,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private Dialog splashDialog, dialog;
     private Handler handler;
+    private ConfAppDbAdapter mDbAdapter;
+    private ConfAppSimpleCursorAdapter mCursorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +79,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         showSplashScreen();
         handler = new Handler();
         AsyncTask.execute(this);
+
+        mDbAdapter = new ConfAppDbAdapter(this);
+        mDbAdapter.open();
+
+
+
+        User user;
+
+
 
 
         // Set up the login form.
@@ -95,6 +106,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+        String email = mEmailView.getText().toString();
+        String passwd = mPasswordView.getText().toString();
+
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -107,7 +121,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mProgressView = findViewById(R.id.login_progress);
 
 
-    }
+    } // onCreate
 
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
@@ -313,6 +327,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         private final String mEmail;
         private final String mPassword;
+        User user;
 
         UserLoginTask(String email, String password) {
             mEmail = email;
@@ -326,19 +341,29 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             try {
                 // Simulate network access.
                 Thread.sleep(2000);
+
+
+               user = mDbAdapter.fetchUserByEmail(mEmail);
+
+
+
+
             } catch (InterruptedException e) {
                 return false;
             }
 
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
+                if (user.getPassword().equals(mPassword)) {
                     // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
+                  //  return pieces[1].equals(mPassword);
                 }
-            }
+
 
             // TODO: register the new account here.
+
+
+
+
+
             return true;
         }
 

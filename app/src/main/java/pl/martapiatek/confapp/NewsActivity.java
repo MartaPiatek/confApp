@@ -3,7 +3,6 @@ package pl.martapiatek.confapp;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.support.v7.widget.Toolbar;
 
@@ -42,7 +41,7 @@ public class NewsActivity extends AppCompatActivity {
         // do identyfikatorów widoków w układzie graficznym
         int[] to = new int[]{
                 R.id.row_newsDate,
-                R.id.row_newsTitle,
+                R.id.row_title,
                 R.id.row_newsContent
 
         };

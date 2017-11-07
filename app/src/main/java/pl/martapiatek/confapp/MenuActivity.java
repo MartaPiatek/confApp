@@ -321,8 +321,14 @@ public class MenuActivity extends AppCompatActivity
         mDbAdapter.createNews( date, "Zmiana sali prezentacji"
                 ,"Zmiana sali prezentacji pt. \"Optimal selection of wavelengths for estimation of oxy-, " +
                         "deoxy- hemoglobin and cytochrome-c-oxidase from time-resolved NIRS measurements\"");
+        mDbAdapter.createNews( date, "Zmiana sali prezentacji"
+                ,"Zmiana sali prezentacji pt. \"Optimal selection of wavelengths for estimation of oxy-, " +
+                        "deoxy- hemoglobin and cytochrome-c-oxidase from time-resolved NIRS measurements\"" ,
+                        "\n Nowa sala B-2 aud. 111 ");
+
 
     }
+
 
 
 

@@ -4,12 +4,14 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.provider.CalendarContract;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -78,6 +80,8 @@ public class EventDetailsActivity extends AppCompatActivity {
         btnSaveNote = (Button) dialogNote.findViewById(R.id.btnSave);
         btnCancel = (Button) dialogNote.findViewById(R.id.btnCancel);
         txtViewNoteText = (TextView) dialogNote.findViewById(R.id.txtViewNoteText);
+
+
 
         btnAddCalendar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -192,8 +196,6 @@ public class EventDetailsActivity extends AppCompatActivity {
         });
 
 
-
-
         btnAddNote.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
@@ -231,5 +233,23 @@ public class EventDetailsActivity extends AppCompatActivity {
         //txt.setEnabled(false);
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+
+            case android.R.id.home:
+                Intent myIntent = new Intent(this,EventsByDayActivity.class);
+                myIntent.putExtra("EVENT_DATE", sDate);
+                startActivity(myIntent);
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

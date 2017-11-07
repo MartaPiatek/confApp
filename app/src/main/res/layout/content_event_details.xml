@@ -16,7 +16,11 @@
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
         android:orientation="vertical"
-        tools:context="pl.martapiatek.confapp.EventDetailsActivity">
+        android:paddingLeft="40px"
+        android:paddingRight="30px"
+        tools:context="pl.martapiatek.confapp.EventDetailsActivity"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="5dp">
 
 
         <TableRow
@@ -122,6 +126,8 @@
             android:id="@+id/btnAddNote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="150px"
+            android:layout_marginRight="150px"
             android:layout_weight="0.2"
             android:text="Dodaj notatkę"/>
 
@@ -134,6 +140,8 @@
             android:id="@+id/btnAddCalendar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="150px"
+            android:layout_marginRight="150px"
             android:layout_weight="0.2"
             android:text="Dodaj do terminarza"/>
 
@@ -147,6 +155,8 @@
             android:id="@+id/btnAddCalendarGoogle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="150px"
+            android:layout_marginRight="150px"
             android:layout_weight="0.2"
             android:text="Dodaj do kalendarza Google"/>
 

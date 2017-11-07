@@ -1,53 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="60dp"
-              android:background="@color/colorBackground"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/list_selector"
+                android:orientation="horizontal"
+                android:padding="5dip" >
 
-    <TableRow
-        android:background="@color/colorBackground"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <LinearLayout android:id="@+id/thumbnail"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:padding="3dip"
+                  android:layout_alignParentLeft="true"
+                  android:background="@drawable/image_bg"
+                  android:layout_marginRight="5dip">
 
-        <View
-            android:background="@color/colorBackground"
-            android:id="@+id/row_tab"
-            class="android.view.View"
-            android:layout_width="10dp"
-            android:layout_height="match_parent"/>
+    </LinearLayout>
 
-        <TextView
+    <TextView
+        android:id="@+id/row_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/thumbnail"
+        android:layout_marginBottom="15px"
+        android:layout_marginTop="15px"
+        android:layout_toRightOf="@+id/thumbnail"
 
-            android:id="@+id/row_agendaDay"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorBackground"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:padding="10dp"
-            android:text="Data"
-            android:textColor="@color/colorFont"
-            android:textSize="18sp"
-            />
+        android:text="Data"
+        android:textColor="#040404"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="sans"/>
 
-    </TableRow>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-    <View
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_right_black"/>
 
-        class="android.view.View"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#ffffff"/>
-
-    <View
-
-        class="android.view.View"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#ffffff"/>
-
-</LinearLayout>
+</RelativeLayout>
