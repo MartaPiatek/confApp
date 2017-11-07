@@ -7,6 +7,15 @@ public class News {
     private String date;
     private String title;
     private String content;
+    private String place;
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
 
     public int getId() {
         return id;
@@ -44,5 +53,12 @@ public class News {
         this.date = date;
         this.title = title;
         this.content = content;
+    }
+
+    public News(String date, String title, String content, String place) {
+        this.date = date;
+        this.title = title;
+        this.content = content;
+        this.place = place;
     }
 }

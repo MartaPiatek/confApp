@@ -1,21 +1,17 @@
 package pl.martapiatek.confapp;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.support.v7.widget.Toolbar;
 
 public class NewsActivity extends AppCompatActivity {
 
     private ListView mListView;
     private ConfAppDbAdapter mDbAdapter;
     private ConfAppSimpleCursorAdapter mCursorAdapter;
-    private ImageButton imageBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +27,9 @@ public class NewsActivity extends AppCompatActivity {
         mDbAdapter = new ConfAppDbAdapter(this);
         mDbAdapter.open();
 
-        //dodaj przykładowe dane
-     //   insertSomeNews();
+
 
         Cursor cursor = mDbAdapter.fetchAllNews();
-
-            //dodaj przykładowe dane
-          //  insertSomeNews();
 
 
         // z kolumn zdefiniowanych w bazie danych
@@ -59,6 +51,7 @@ public class NewsActivity extends AppCompatActivity {
                 // kontekst
                 NewsActivity.this,
                 // układ graficzny wiersza
+       /////         R.layout.news_rows,
                 R.layout.news_rows,
                 // kursor
                 cursor,
@@ -99,11 +92,7 @@ public class NewsActivity extends AppCompatActivity {
         return (int)mCursorAdapter.getItemId(nC);
     }
 
-    private void insertSomeNews() {
-        mDbAdapter.createNews( "2012-09-09", "Pierwszy news", "Zmiana miejca eventu");
-        mDbAdapter.createNews( "2012-09-10", "Drugi news", "Zmiana miejca eventu 2");
 
-    }
 
 
 }

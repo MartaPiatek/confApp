@@ -1,94 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="180dp"
-              android:background="@color/colorBackground"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/list_selector"
+                android:orientation="horizontal"
+                android:padding="5dip" >
 
-    <TableRow
-        android:background="@color/colorBackground"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
 
-        <View
-            android:id="@+id/row_tab"
-            class="android.view.View"
-            android:layout_width="10dp"
-            android:layout_height="match_parent"/>
+    <LinearLayout android:id="@+id/thumbnail"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:padding="3dip"
+                  android:layout_alignParentLeft="true"
+                  android:background="@drawable/image_bg"
+                  android:layout_marginRight="5dip">
 
-        <TextView
+    </LinearLayout>
 
-            android:id="@+id/row_newsDate"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorBackground"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:padding="10dp"
-            android:text="Data"
-            android:textColor="@color/colorFont"
-            android:textSize="18sp"
-            />
 
-    </TableRow>
+    <TextView
+        android:id="@+id/row_newsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/thumbnail"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:text="Title"
+        android:textColor="#040404"
 
-    <TableRow
-        android:background="@color/colorBackground"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:typeface="sans"/>
 
-        <TextView
-            android:id="@+id/row_newsTitle"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorBackground"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:padding="10dp"
-            android:text="Tytuł"
-            android:textColor="@color/colorFont"
-            android:textSize="18sp"
-            />
-    </TableRow>
 
-    <TableRow
-        android:background="@color/colorBackground"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-
-        <TextView
-            android:id="@+id/row_newsContent"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorBackground"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:padding="10dp"
-            android:text="Treść"
-            android:textColor="@color/colorFont"
-            android:textSize="18sp"
-            />
-    </TableRow>
-
-    <View
-
-        class="android.view.View"
+    <TextView
+        android:id="@+id/row_newsContent"
         android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#000"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/row_newsTitle"
+        android:layout_marginTop="1dip"
 
-    <View
+        android:layout_toRightOf="@+id/thumbnail"
+        android:text="Text"
+        android:textColor="#343434"
+        android:textSize="14sp"/>
 
-        class="android.view.View"
+
+    <TextView
+        android:id="@+id/row_newsPlace"
         android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#333"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/row_newsTitle"
+        android:layout_marginTop="30dip"
 
-</LinearLayout>
+        android:layout_toRightOf="@+id/thumbnail"
+
+        android:textColor="#343434"
+        android:textSize="14sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/row_newsDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/row_newsTitle"
+        android:layout_marginRight="25dip"
+        android:gravity="right"
+
+        android:textColor="#10bcc9"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:text="11-11-2017"/>
+
+
+</RelativeLayout>

@@ -29,6 +29,7 @@ public class ConfAppDbAdapter {
     public static final String COL_NEWS_DATE = "newsDate";
     public static final String COL_NEWS_TITLE = "newsTitle";
     public static final String COL_NEWS_CONTENT = "newsContent";
+    public static final String COL_NEWS_PLACE = "newsPlace";
 
     public static final String COL_NOTE_ID = "_id";
     public static final String COL_NOTE_DATE = "noteDate";
@@ -40,6 +41,10 @@ public class ConfAppDbAdapter {
     public static final String COL_CALENDAR_EVENT_DATE = "date";
     public static final String COL_CALENDAR_EVENT_LOCATION = "location";
     public static final String COL_CALENDAR_EVENT_TITLE = "eventTitle";
+
+    public static final String COL_USER_ID = "_id";
+    public static final String COL_USER_EMAIL = "userEmail";
+    public static final String COL_USER_PASSWORD = "userPassword";
 
 
 
@@ -63,6 +68,7 @@ public class ConfAppDbAdapter {
     public static final int INDEX_NEWS_DATE = INDEX_NEWS_ID + 1;
     public static final int INDEX_NEWS_TITLE = INDEX_NEWS_ID + 2;
     public static final int INDEX_NEWS_CONTENT = INDEX_NEWS_ID + 3;
+    public static final int INDEX_NEWS_PLACE = INDEX_NEWS_ID + 4;
 
     public static final int INDEX_NOTE_ID = 0;
     public static final int INDEX_NOTE_DATE = INDEX_NOTE_ID + 1;
@@ -75,6 +81,9 @@ public class ConfAppDbAdapter {
     public static final int INDEX_CALENDAR_EVENT_LOCATION = INDEX_EVENT_ID + 2;
     public static final int INDEX_CALENDAR_EVENT_TITLE = INDEX_EVENT_ID + 3;
 
+    public static final int INDEX_USER_ID = 0;
+    public static final int INDEX_USER_EMAIL = INDEX_USER_ID + 1;
+    public static final int INDEX_USER_PASSWORD = INDEX_USER_ID + 2;
 
     //dziennik zdarzeń
     public static final String TAG = "ConfAppDbAdapter";
@@ -89,6 +98,7 @@ public class ConfAppDbAdapter {
     private static final String TABLE_NEWS_NAME = "tbl_news";
     private static final String TABLE_NOTE_NAME = "tbl_note";
     private static final String TABLE_CALENDAR_NAME = "tbl_calendar";
+    private static final String TABLE_USER_NAME = "tbl_user";
 
     private static final int DATABASE_VERSION = 1;
 
@@ -119,7 +129,8 @@ public class ConfAppDbAdapter {
                     COL_NEWS_ID + " INTEGER PRIMARY KEY autoincrement, " +
                     COL_NEWS_DATE + " TEXT, " +
                     COL_NEWS_TITLE + " TEXT, " +
-                    COL_NEWS_CONTENT + " TEXT ); "
+                    COL_NEWS_CONTENT + " TEXT, " +
+                    COL_NEWS_PLACE + " TEXT ); "
             ;
 
     private static final String CREATE_TABLE_NOTE =
@@ -138,6 +149,12 @@ public class ConfAppDbAdapter {
                     COL_CALENDAR_EVENT_TITLE + " TEXT ); "
             ;
 
+    private static final String CREATE_TABLE_USER =
+            "CREATE TABLE if not exists " + TABLE_USER_NAME + " ( " +
+                    COL_USER_ID + " INTEGER PRIMARY KEY autoincrement, " +
+                    COL_USER_EMAIL + " TEXT," +
+                    COL_USER_PASSWORD + " TEXT ); "
+            ;
 
     public ConfAppDbAdapter(Context ctx) {
         mCtx = ctx;
@@ -179,6 +196,9 @@ public class ConfAppDbAdapter {
 
             Log.w(TAG, CREATE_TABLE_CALENDAR);
             db.execSQL(CREATE_TABLE_CALENDAR);
+
+            Log.w(TAG, CREATE_TABLE_USER);
+            db.execSQL(CREATE_TABLE_USER);
         }
 
         @Override
@@ -191,6 +211,7 @@ public class ConfAppDbAdapter {
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_NEWS_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_NOTE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_CALENDAR_NAME);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER_NAME);
             onCreate(db);
         }
     }
@@ -233,6 +254,15 @@ public class ConfAppDbAdapter {
         mDb.insert(TABLE_NEWS_NAME, null, values);
     }
 
+    public void createNews( String date, String title, String content, String place){
+        ContentValues values = new ContentValues();
+        values.put(COL_NEWS_DATE, date);
+        values.put(COL_NEWS_TITLE, title);
+        values.put(COL_NEWS_CONTENT, content);
+        values.put(COL_NEWS_PLACE, place);
+        mDb.insert(TABLE_NEWS_NAME, null, values);
+    }
+
     public void createNote( String date, String title, String content){
         ContentValues values = new ContentValues();
         values.put(COL_NOTE_DATE, date);
@@ -249,6 +279,14 @@ public class ConfAppDbAdapter {
         values.put(COL_CALENDAR_EVENT_TITLE, title);
 
         mDb.insert(TABLE_CALENDAR_NAME, null, values);
+    }
+
+    public void createUser( String email, String password){
+        ContentValues values = new ContentValues();
+        values.put(COL_USER_EMAIL, email);
+        values.put(COL_USER_PASSWORD, password);
+
+        mDb.insert(TABLE_USER_NAME, null, values);
     }
 
     // ODCZYT
@@ -362,6 +400,41 @@ public class ConfAppDbAdapter {
         return cursor;
     }
 
+    public User fetchUserByEmail(String email){
+
+        mDb = mDbHelper.getReadableDatabase();
+
+        String table = "tbl_user";
+        String[] columns = null;
+        // String selection = "eventSpeaker LIKE ?";
+        String selection = " userEmail = ?";
+        String[] selectionArgs = new String[] {email};
+        // String[] selectionArgs = new String[] { lastName +"%" };
+        String groupBy = null;
+        String having = null;
+        String orderBy = null;
+        String limit = null;
+
+        //   String whereClause = "column1 = ? OR column1 = ?";
+        //   String[] whereArgs = new String[] {
+        //          "value1",
+        //         "value2"
+
+        Cursor cursor = mDb.query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        return new User(
+                cursor.getInt(INDEX_USER_ID),
+                cursor.getString(INDEX_USER_EMAIL),
+                cursor.getString(INDEX_USER_PASSWORD)
+                );
+
+
+
+      //  return cursor;
+    }
+
     public Cursor fetchAllSpeakers(){
         Cursor mCursor = mDb.query(TABLE_SPEAKER_NAME, new String[]{COL_SPEAKER_ID,
                         COL_SPEAKER_FIRST_NAME, COL_SPEAKER_LAST_NAME, COL_SPEAKER_TITLE, COL_SPEAKER_DESCRIPTION},
@@ -401,6 +474,17 @@ public class ConfAppDbAdapter {
 
         return mCursor;
     }
+
+    public Cursor fetchAllNewsWithPlace(){
+        Cursor mCursor = mDb.query(TABLE_NEWS_NAME, new String[]{COL_NEWS_ID,
+                        COL_NEWS_DATE, COL_NEWS_TITLE, COL_NEWS_CONTENT, COL_NEWS_PLACE},
+                null, null, null, null, COL_NEWS_ID);
+        if(mCursor != null)
+            mCursor.moveToFirst();
+
+        return mCursor;
+    }
+
 
     public Cursor fetchAllNotes(){
         Cursor mCursor = mDb.query(TABLE_NOTE_NAME, new String[]{COL_NOTE_ID,
