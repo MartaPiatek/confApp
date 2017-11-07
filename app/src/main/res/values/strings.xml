@@ -37,6 +37,6 @@
     <string name="title_activity_event_details">Szczegóły wydarzenia</string>
 
 
-
     <string name="title_activity_agenda">Agenda</string>
+    <string name="title_activity_plan">PlanActivity</string>
 </resources>

@@ -20,7 +20,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private Button btnNavigation;
+    private Button btnNavigation, btnBuildingPlan;
 
 
     @Override
@@ -45,6 +45,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                  mapIntent.setPackage("com.google.android.apps.maps");
                 startActivity(mapIntent);
+            }
+        });
+
+
+        btnBuildingPlan = (Button) findViewById(R.id.btnBuildingPlan);
+        btnBuildingPlan.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MapsActivity.this,PlanActivity.class);
+                startActivity(myIntent);
             }
         });
 

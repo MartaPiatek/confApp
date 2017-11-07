@@ -333,13 +333,13 @@ public class MenuActivity extends AppCompatActivity
 
 
     private void insertSomeSpeakers() {
-        mDbAdapter.createSpeaker( "Bartosz", "Kopczyński",
+        mDbAdapter.createSpeaker( "Bartosz Kopczyński",
                 "Lodz University of Technology",
                 "");
-        mDbAdapter.createSpeaker( "Aleh", "Sudakou",
+        mDbAdapter.createSpeaker( "Aleh Sudakou",
                 "Nalecz Institute of Biocybernetics and Biomedical Engineering Polish Academy of Sciences",
                 "");
-        mDbAdapter.createSpeaker( "Marek", " Wodzinski",
+        mDbAdapter.createSpeaker( "Marek Wodzinski",
                 "AGH University of Science and Technology, Department of Measurement and Electronics",
                 "");
 
