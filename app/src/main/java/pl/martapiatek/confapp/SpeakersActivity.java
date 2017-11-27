@@ -80,7 +80,7 @@ public class SpeakersActivity extends AppCompatActivity {
 
                 Speaker speaker =  mDbAdapter.fetchSpeakerById(getIdFromPosition(masterListPosition));
 
-                Intent myIntent = new Intent(view.getContext(),SpeakerDatailsActivity.class);
+                Intent myIntent = new Intent(view.getContext(),SpeakerDetailsActivity.class);
                 myIntent.putExtra("SPEAKER_TITLE", speaker.getTitle());
                 myIntent.putExtra("SPEAKER_NAME", speaker.getName());
                 myIntent.putExtra("SPEAKER_DESCRIPTION", speaker.getDescription());

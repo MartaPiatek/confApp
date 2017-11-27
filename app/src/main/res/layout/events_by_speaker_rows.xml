@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/list_selector"
+                android:orientation="horizontal"
+                android:padding="5dip" >
+
+    <!--  ListRow Left sied Thumbnail image -->
+
+    <TextView
+        android:id="@+id/row_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/thumbnail"
+        android:layout_marginTop="15px"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:text="Title"
+
+        android:textColor="#040404"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:typeface="sans"/>
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_right_black"/>
+
+</RelativeLayout>

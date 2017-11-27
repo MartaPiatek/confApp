@@ -38,7 +38,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class MenuActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, Runnable {
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     private Dialog splashDialog, dialog;
     private Handler handler;
@@ -54,9 +54,9 @@ public class MenuActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        showSplashScreen();
-        handler = new Handler();
-        AsyncTask.execute(this);
+      //  showSplashScreen();
+      //  handler = new Handler();
+       // AsyncTask.execute(this);
 
 
         mDbAdapter = new ConfAppDbAdapter(this);
@@ -384,7 +384,7 @@ public class MenuActivity extends AppCompatActivity
         notificationManager.notify(0, noti);
 
     }
-
+/*
     @Override
     protected void onPause() {
         super.onPause();
@@ -414,4 +414,5 @@ public class MenuActivity extends AppCompatActivity
                             }, 5000
         );
     }
+    */
 }

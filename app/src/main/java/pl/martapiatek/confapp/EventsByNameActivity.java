@@ -70,7 +70,7 @@ public class EventsByNameActivity extends AppCompatActivity {
 
                                                  //  Speaker speaker =  mDbAdapter.fetchSpeakerById(getIdFromPosition(masterListPosition));
 //
-                                                 //                                               Intent myIntent = new Intent(view.getContext(),SpeakerDatailsActivity.class);
+                                                 //                                               Intent myIntent = new Intent(view.getContext(),SpeakerDetailsActivity.class);
                                                  //                                             myIntent.putExtra("SPEAKER_TITLE", speaker.getTitle());
                                                  //                                           myIntent.putExtra("SPEAKER_FIRST_NAME", speaker.getFirstName());
                                                  //                                         myIntent.putExtra("SPEAKER_LAST_NAME", speaker.getLastName());
