@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="pl.martapiatek.confapp.ConferenceActivity"
+    android:background="@color/colorBackground"
+    tools:showIn="@layout/activity_conference">
 
 
     <LinearLayout
@@ -12,69 +17,37 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="pl.martapiatek.confapp.ConferenceActivity"
-        android:layout_weight="1"
+
         android:background="@color/colorBackground"
-        >
+        android:orientation="vertical"
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.15"/>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.8"
-            android:orientation="vertical"
-            android:background="@color/colorBackground">
-
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="6.18"
-                android:editable="false"
-                android:ems="10"
-                android:enabled="false"
-                android:inputType="textMultiLine"
-
-                android:text="The Conference was conceived as a forum for the presentation of scientific activities of students.
-Treated as equivalent there are achievements resulting from the implementation of individual work of the students,
-from their research or from their participation in research teams, either in institutions or in their departments.
-
-In order to maintain the interdisciplinary nature of the thematic sessions  while allowing students and doctoral
-students with similar interests to meet in  one time, each participant will choose the scientific discipline or
-disciplines that best suit their article topic. This will allow us to choose the reviewers and create interdisciplinary
- sessions for which there will be  the highest demand. It will also even out the level of the competition in  various
- research topics, which will contribute to the increase in the quality of the content at the conference"
-                android:textColor="@color/colorFont"
+        tools:context="pl.martapiatek.confapp.ConferenceActivity">
 
 
-                android:focusable="false"/>
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            app:srcCompat="@drawable/about"/>
 
-            <Button
-                android:id="@+id/btnSpeakers"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Uczestnicy"/>
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:editable="false"
+            android:ems="10"
+            android:enabled="false"
+            android:focusable="false"
 
-            <Button
-                android:id="@+id/btnEvents"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Wydarzenia"/>
-
-        </LinearLayout>
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.15"/>
+            android:inputType="textMultiLine"
+            android:text="The Cosmetic Science Excellence Highway will lead to Milan, a modern and vibrant metropolis, the Italian capital for economy, fashion and design, a paradise for shopping, trendy, rich with things to do, changing every day! Milan offers top class services, cultural events, shows, artistic spots, education and research institutes; the Conference will be held in MiCo, the largest European Convention Centre, right in the hearth of the modern Milan!"
+            android:textColor="@color/colorFont"/>
 
     </LinearLayout>
+
+
 
 
 </android.support.constraint.ConstraintLayout>

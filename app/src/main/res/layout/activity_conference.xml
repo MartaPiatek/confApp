@@ -22,5 +22,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_conference"/>
+    <include
+        layout="@layout/content_conference"
+        tools:layout_editor_absoluteY="162dp"/>
 </android.support.design.widget.CoordinatorLayout>

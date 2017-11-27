@@ -20,24 +20,6 @@ public class ConferenceActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        btnSpeakers = (Button) findViewById(R.id.btnSpeakers);
-
-        btnSpeakers.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent myIntent = new Intent(getApplicationContext(),SpeakersActivity.class);
-                startActivity(myIntent);
-            }
-        });
-
-
-        btnEvents = (Button) findViewById(R.id.btnEvents);
-
-        btnEvents.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(),EventsActivity.class);
-                startActivity(myIntent);
-            }
-        });
 
 
 
