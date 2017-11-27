@@ -2,13 +2,11 @@ package pl.martapiatek.confapp;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -24,6 +22,10 @@ public class SpeakersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speakers);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         mListView = (ListView) findViewById(R.id.reminders_list_view);
         mListView.setDivider(null);
         mDbAdapter = new ConfAppDbAdapter(this);
@@ -38,18 +40,16 @@ public class SpeakersActivity extends AppCompatActivity {
 ;
 
         String[] from = new String[]{
-                    ConfAppDbAdapter.COL_SPEAKER_FIRST_NAME,
-                ConfAppDbAdapter.COL_SPEAKER_LAST_NAME,
-                ConfAppDbAdapter.COL_SPEAKER_TITLE,
-                     ConfAppDbAdapter.COL_SPEAKER_DESCRIPTION
+                    ConfAppDbAdapter.COL_SPEAKER_NAME,
+                    ConfAppDbAdapter.COL_SPEAKER_TITLE,
+                ConfAppDbAdapter.COL_SPEAKER_DESCRIPTION
 
         };
 
         // do identyfikatorów widoków w układzie graficznym
         int[] to = new int[]{
-                R.id.row_personFirstName,
-                R.id.row_personLastName,
-                R.id.row_company
+                R.id.row_title,
+                R.id.row_personCompany
 
 
         };
@@ -80,8 +80,7 @@ public class SpeakersActivity extends AppCompatActivity {
 
                 Intent myIntent = new Intent(view.getContext(),SpeakerDatailsActivity.class);
                 myIntent.putExtra("SPEAKER_TITLE", speaker.getTitle());
-                myIntent.putExtra("SPEAKER_FIRST_NAME", speaker.getFirstName());
-                myIntent.putExtra("SPEAKER_LAST_NAME", speaker.getLastName());
+                myIntent.putExtra("SPEAKER_NAME", speaker.getName());
                 myIntent.putExtra("SPEAKER_DESCRIPTION", speaker.getDescription());
 
                 startActivity(myIntent);
@@ -97,14 +96,5 @@ public class SpeakersActivity extends AppCompatActivity {
     private int getIdFromPosition(int nC) {
         return (int)mCursorAdapter.getItemId(nC);
     }
-
-    private void insertSomeSpeakers() {
-        mDbAdapter.createSpeaker( "Adam", "Nowak", "dr", "CEO Google");
-        mDbAdapter.createSpeaker( "Antoni", "Bodnar", "prof", "Politechnika Wrocławska");
-        mDbAdapter.createSpeaker( "Jan", "Kowalski", "dr", "CEO Pied Pipper");
-        mDbAdapter.createSpeaker( "Joanna", "Kaminska", "MD", "Facebook");
-
-    }
-
 
 }

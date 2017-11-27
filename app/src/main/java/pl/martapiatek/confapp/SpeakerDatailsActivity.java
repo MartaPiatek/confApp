@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class SpeakerDatailsActivity extends AppCompatActivity {
 
     private TextView txtViewSpeakerName, txtViewSpeakerDescription;
-    private String sTitle, sFirstName, sLastName, sDescription, name;
+    private String sTitle, sName, sDescription;
     private ListView mListView;
     private ConfAppDbAdapter mDbAdapter;
     private ConfAppSimpleCursorAdapter mCursorAdapter;
@@ -29,13 +29,12 @@ public class SpeakerDatailsActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
 
         sTitle = bundle.get("SPEAKER_TITLE").toString();
-        sFirstName = bundle.get("SPEAKER_FIRST_NAME").toString();
-        sLastName = bundle.get("SPEAKER_LAST_NAME").toString();
+        sName = bundle.get("SPEAKER_NAME").toString();
         sDescription = bundle.get("SPEAKER_DESCRIPTION").toString();
 
-        name = sTitle + " " + sFirstName + " " + sLastName;
 
-        txtViewSpeakerName.setText(name);
+
+        txtViewSpeakerName.setText(sName);
         //txt.setEnabled(false);
 
         txtViewSpeakerDescription.setText(sDescription);
@@ -49,9 +48,9 @@ public class SpeakerDatailsActivity extends AppCompatActivity {
 
 
         //dodaj przykładowe dane
-        insertSomeEvents();
+    //    insertSomeEvents();
 
-        Cursor cursor = mDbAdapter.fetchEventBySpeakerName(sFirstName + " " + sLastName);
+        Cursor cursor = mDbAdapter.fetchEventBySpeakerName(sName);
 
         // z kolumn zdefiniowanych w bazie danych
         String[] from = new String[]{
@@ -66,8 +65,7 @@ public class SpeakerDatailsActivity extends AppCompatActivity {
                 R.id.row_date,
                 R.id.row_location,
                 R.id.row_title,
-                R.id.row_description,
-                R.id.row_speakerName
+
 
         };
 
@@ -75,7 +73,7 @@ public class SpeakerDatailsActivity extends AppCompatActivity {
                 // kontekst
                 SpeakerDatailsActivity.this,
                 // układ graficzny wiersza
-                R.layout.events_rows,
+                R.layout.event_day_rows,
                 // kursor
                 cursor,
                 // z kolumn zdefiniowanych w bazie danych

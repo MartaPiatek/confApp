@@ -13,8 +13,7 @@ public class ConfAppDbAdapter {
 
     //nazwy kolumn
     public static final String COL_SPEAKER_ID = "_id";
-    public static final String COL_SPEAKER_FIRST_NAME = "firstName";
-    public static final String COL_SPEAKER_LAST_NAME = "lastName";
+    public static final String COL_SPEAKER_NAME = "name";
     public static final String COL_SPEAKER_TITLE = "speakerTitle";
     public static final String COL_SPEAKER_DESCRIPTION = "speakerDescription";
 
@@ -52,10 +51,9 @@ public class ConfAppDbAdapter {
     //indeksy
 
     public static final int INDEX_SPEAKER_ID = 0;
-    public static final int INDEX_SPEAKER_FIRST_NAME = INDEX_SPEAKER_ID + 1;
-    public static final int INDEX_SPEAKER_LAST_NAME = INDEX_SPEAKER_ID + 2;
-    public static final int INDEX_SPEAKER_TITLE = INDEX_SPEAKER_ID + 3;
-    public static final int INDEX_SPEAKER_DESCRIPTION = INDEX_SPEAKER_ID + 4;
+    public static final int INDEX_SPEAKER_NAME = INDEX_SPEAKER_ID + 1;
+    public static final int INDEX_SPEAKER_TITLE = INDEX_SPEAKER_ID + 2;
+    public static final int INDEX_SPEAKER_DESCRIPTION = INDEX_SPEAKER_ID + 3;
 
     public static final int INDEX_EVENT_ID = 0;
     public static final int INDEX_EVENT_DATE = INDEX_EVENT_ID + 1;
@@ -108,8 +106,7 @@ public class ConfAppDbAdapter {
     private static final String CREATE_TABLE_SPEAKER =
                     "CREATE TABLE if not exists " + TABLE_SPEAKER_NAME + " ( " +
                      COL_SPEAKER_ID + " INTEGER PRIMARY KEY autoincrement, " +
-                     COL_SPEAKER_FIRST_NAME + " TEXT, " +
-                     COL_SPEAKER_LAST_NAME + " TEXT, " +
+                     COL_SPEAKER_NAME + " TEXT, " +
                      COL_SPEAKER_TITLE + " TEXT, " +
                      COL_SPEAKER_DESCRIPTION + " TEXT ); "
             ;
@@ -217,10 +214,9 @@ public class ConfAppDbAdapter {
     }
 
     // TWORZENIE
-    public void createSpeaker( String firstName, String lastName, String title, String description){
+    public void createSpeaker( String name, String title, String description){
         ContentValues values = new ContentValues();
-        values.put(COL_SPEAKER_FIRST_NAME, firstName);
-        values.put(COL_SPEAKER_LAST_NAME, lastName);
+        values.put(COL_SPEAKER_NAME, name);
         values.put(COL_SPEAKER_TITLE, title);
         values.put(COL_SPEAKER_DESCRIPTION, description);
         mDb.insert(TABLE_SPEAKER_NAME, null, values);
@@ -229,8 +225,7 @@ public class ConfAppDbAdapter {
 
     public long createSpeaker(Speaker speaker){
         ContentValues values = new ContentValues();
-        values.put(COL_SPEAKER_FIRST_NAME, speaker.getFirstName());
-        values.put(COL_SPEAKER_LAST_NAME, speaker.getLastName());
+        values.put(COL_SPEAKER_NAME, speaker.getName());
         values.put(COL_SPEAKER_TITLE, speaker.getTitle());
         values.put(COL_SPEAKER_DESCRIPTION, speaker.getDescription());
         return mDb.insert(TABLE_SPEAKER_NAME, null, values);
@@ -293,7 +288,7 @@ public class ConfAppDbAdapter {
     public Speaker fetchSpeakerById(int id) {
 
         Cursor cursor = mDb.query(TABLE_SPEAKER_NAME, new String[]{COL_SPEAKER_ID,
-                        COL_SPEAKER_FIRST_NAME, COL_SPEAKER_LAST_NAME, COL_SPEAKER_TITLE,
+                        COL_SPEAKER_NAME, COL_SPEAKER_TITLE,
                         COL_SPEAKER_DESCRIPTION}, COL_SPEAKER_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
@@ -301,8 +296,7 @@ public class ConfAppDbAdapter {
 
         return new Speaker(
                 cursor.getInt(INDEX_SPEAKER_ID),
-                cursor.getString(INDEX_SPEAKER_FIRST_NAME),
-                cursor.getString(INDEX_SPEAKER_LAST_NAME),
+                cursor.getString(INDEX_SPEAKER_NAME),
                 cursor.getString(INDEX_SPEAKER_TITLE),
                 cursor.getString(INDEX_SPEAKER_DESCRIPTION) );
     }
@@ -345,20 +339,6 @@ public class ConfAppDbAdapter {
         );*/
         return cursor;
     }
-
-
- /*   public Cursor fetchEventDate(){
-
-        mDb = mDbHelper.getReadableDatabase();
-
-        Cursor cursor = mDb.query(TABLE_EVENT_NAME, new String[]{COL_EVENT_ID,
-                        COL_EVENT_DATE, COL_EVENT_LOCATION, COL_EVENT_TITLE, COL_EVENT_DESCRIPTION, COL_EVENT_SPEAKER},
-                null, null, null, null, COL_EVENT_ID);
-        if(cursor != null)
-            cursor.moveToFirst();
-        return cursor;
-    }
-*/
 
 
     public Cursor fetchAllDates(){
@@ -437,8 +417,8 @@ public class ConfAppDbAdapter {
 
     public Cursor fetchAllSpeakers(){
         Cursor mCursor = mDb.query(TABLE_SPEAKER_NAME, new String[]{COL_SPEAKER_ID,
-                        COL_SPEAKER_FIRST_NAME, COL_SPEAKER_LAST_NAME, COL_SPEAKER_TITLE, COL_SPEAKER_DESCRIPTION},
-                null, null, null, null, COL_SPEAKER_FIRST_NAME);
+                        COL_SPEAKER_NAME, COL_SPEAKER_TITLE, COL_SPEAKER_DESCRIPTION},
+                null, null, null, null, COL_SPEAKER_NAME);
         if(mCursor != null)
             mCursor.moveToFirst();
 
