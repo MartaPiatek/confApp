@@ -1,7 +1,7 @@
-package pl.martapiatek.confapp;
+package pl.martapiatek.confapp.domain;
 
 
-class Speaker {
+public class Speaker {
 
     private int id;
     private String name;

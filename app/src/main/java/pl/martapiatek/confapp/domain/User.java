@@ -1,4 +1,4 @@
-package pl.martapiatek.confapp;
+package pl.martapiatek.confapp.domain;
 
 
 

@@ -35,6 +35,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import pl.martapiatek.confapp.domain.User;
+
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**

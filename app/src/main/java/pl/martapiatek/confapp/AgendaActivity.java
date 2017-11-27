@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.support.v7.widget.Toolbar;
 
+import pl.martapiatek.confapp.domain.Event;
+
 
 public class AgendaActivity extends AppCompatActivity {
     private ListView mListView;

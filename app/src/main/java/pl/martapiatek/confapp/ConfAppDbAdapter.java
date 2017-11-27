@@ -8,6 +8,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import pl.martapiatek.confapp.domain.Event;
+import pl.martapiatek.confapp.domain.Speaker;
+import pl.martapiatek.confapp.domain.User;
+
 
 public class ConfAppDbAdapter {
 

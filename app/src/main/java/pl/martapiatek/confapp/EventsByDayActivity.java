@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import pl.martapiatek.confapp.domain.Event;
+
 public class EventsByDayActivity extends AppCompatActivity {
 
     private ListView mListView;

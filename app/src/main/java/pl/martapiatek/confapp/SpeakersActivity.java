@@ -10,6 +10,8 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import pl.martapiatek.confapp.domain.Speaker;
+
 public class SpeakersActivity extends AppCompatActivity {
 
     private ListView mListView;
