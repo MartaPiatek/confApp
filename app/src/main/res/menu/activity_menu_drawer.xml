@@ -13,72 +13,66 @@
         <item
             android:id="@+id/nav_aboutConference"
             android:icon="@drawable/ic_menu_news"
-            android:title="O konferencji"/>
+            android:title="@string/nav_about_conference"/>
         <item
             android:id="@+id/nav_agenda"
             android:icon="@drawable/ic_menu_agenda"
-            android:title="Agenda"/>
+            android:title="@string/nav_agenda"/>
         <item
             android:id="@+id/nav_speakers"
             android:icon="@drawable/ic_menu_people"
-            android:title="Uczestnicy"/>
+            android:title="@string/nav_speakers"/>
 
         <item
             android:id="@+id/nav_news"
             android:icon="@drawable/ic_menu_new"
-            android:title="Aktualności"/>
+            android:title="@string/nav_news"/>
 
         <item
             android:id="@+id/nav_maps"
             android:icon="@drawable/ic_menu_map"
-            android:title="Mapy"/>
+            android:title="@string/nav_maps"/>
         <item
             android:id="@+id/nav_notes"
             android:icon="@drawable/ic_menu_note"
-            android:title="Notatki"/>
+            android:title="@string/nav_notes"/>
 
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Galeria"/>
+            android:title="@string/nav_gallery"/>
 
         <item
             android:id="@+id/nav_calendar"
             android:icon="@drawable/ic_menu_calendar"
-            android:title="Terminarz"/>
-
-        <item
-            android:id="@+id/nav_notification"
-            android:icon="@drawable/ic_menu_notifications"
-            android:title="Notyfikacjie"/>
+            android:title="@string/nav_calendar"/>
 
         <item
             android:id="@+id/nav_awards"
             android:icon="@drawable/ic_menu_awards"
-            android:title="Nagrody"/>
-
+            android:title="@string/nav_award"/>
         <item
             android:id="@+id/nav_help"
             android:icon="@drawable/ic_menu_help"
-            android:title="Pomoc"/>
+            android:title="@string/nav_help"/>
 
         <item
             android:id="@+id/nav_contact"
             android:icon="@drawable/ic_menu_contact"
-            android:title="Kontakt"/>
+            android:title="@string/nav_contact"/>
 
     </group>
 
-    <item android:title="Media społecznościowe">
+    <item android:title="@string/nav_social_media">
         <menu>
             <item
                 android:id="@+id/nav_facebook"
                 android:icon="@drawable/ic_menu_facebook"
-                android:title="Facebook"/>
+                android:title="@string/nav_facebook"/>
             <item
                 android:id="@+id/nav_twitter"
                 android:icon="@drawable/ic_menu_twitter"
-                android:title="Twitter"/>
+                android:title="@string/nav_Twitter"/>
         </menu>
     </item>
 

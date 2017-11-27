@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">confApp</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_btnMap">Maps</string>
+    <string name="title_btnInfoConf">About conference</string>
+    <string name="title_activity_menu">Menu</string>
+    <string name="nav_facebook">Facebook</string>
+    <string name="nav_Twitter">Twitter</string>
+    <string name="nav_about_conference">O konferencji</string>
+    <string name="nav_agenda">Agenda</string>
+    <string name="nav_speakers">Uczestnicy</string>
+    <string name="nav_news">Aktualności</string>
+    <string name="nav_maps">Mapy</string>
+    <string name="nav_notes">Notatki</string>
+    <string name="nav_gallery">Galeria</string>
+    <string name="nav_calendar">Terminarz</string>
+    <string name="nav_award">Nagrody</string>
+    <string name="nav_help">Pomoc</string>
+    <string name="nav_contact">Kontakt</string>
+    <string name="nav_social_media">Media społecznościowe</string>
+</resources>

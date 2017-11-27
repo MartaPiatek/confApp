@@ -29,14 +29,29 @@
     <string name="action_settings">Ustawienia</string>
     <string name="title_activity_agenda2">Agenda2Activity</string>
     <string name="title_activity_gallery">Galeria</string>
-    <string name="title_activity_full_image">FullImageActivity</string>
+    <string name="title_activity_full_image">Zdjęcie</string>
     <string name="title_activity_settings">Ustawienia</string>
     <string name="title_activity_news">Aktualności</string>
     <string name="title_activity_conference">Informacje o konferencji</string>
     <string name="title_activity_events_by_day">Wydarzenia</string>
     <string name="title_activity_event_details">Szczegóły wydarzenia</string>
-
-
+    <string name="title_activity_speakers">Uczestnicy</string>
+    <string name="title_activity_calendar">Terminarz</string>
     <string name="title_activity_agenda">Agenda</string>
-    <string name="title_activity_plan">PlanActivity</string>
+    <string name="title_activity_plan">Plan</string>
+    <string name="title_activity_award">Nagrody</string>
+    <string name="nav_about_conference">O konferencji</string>
+    <string name="nav_agenda">Agenda</string>
+    <string name="nav_speakers">Uczestnicy</string>
+    <string name="nav_news">Aktualności</string>
+    <string name="nav_maps">Mapy</string>
+    <string name="nav_notes">Notatki</string>
+    <string name="nav_gallery">Galeria</string>
+    <string name="nav_calendar">Terminarz</string>
+    <string name="nav_award">Nagrody</string>
+    <string name="nav_help">Pomoc</string>
+    <string name="nav_contact">Kontakt</string>
+    <string name="nav_facebook">Facebook</string>
+    <string name="nav_Twitter">Twitter</string>
+    <string name="nav_social_media">Media społecznościowe</string>
 </resources>
