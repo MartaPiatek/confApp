@@ -3,8 +3,6 @@ package pl.martapiatek.confapp;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class CalendarActivity extends AppCompatActivity {
@@ -18,7 +16,7 @@ public class CalendarActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_calendar);
 
-            mListView = (ListView) findViewById(R.id.events_list_view);
+            mListView = (ListView) findViewById(R.id.calendar_list_view);
             mListView.setDivider(null);
             mDbAdapter = new ConfAppDbAdapter(this);
             mDbAdapter.open();
@@ -47,7 +45,7 @@ public class CalendarActivity extends AppCompatActivity {
                     // kontekst
                     CalendarActivity.this,
                     // układ graficzny wiersza
-                    R.layout.events_rows,
+                    R.layout.event_day_rows,
                     // kursor
                     cursor,
                     // z kolumn zdefiniowanych w bazie danych
