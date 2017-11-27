@@ -32,12 +32,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
-            <Button
-                android:id="@+id/btn_InfoConf"
+            <Space
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/title_btnInfoConf"/>
+                android:layout_weight="1"/>
 
             <Space
                 android:layout_width="match_parent"
@@ -45,23 +43,11 @@
                 android:layout_weight="1"/>
 
             <Button
-                android:id="@+id/btnNews"
+                android:id="@+id/btnCreateNotification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Aktualności"/>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <Button
-                android:id="@+id/btnAgenda"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/title_btnAgenda"/>
+                android:text="Pokaż powiadomienie"/>
 
             <Space
                 android:layout_width="match_parent"

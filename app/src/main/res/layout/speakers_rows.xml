@@ -1,85 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="105dp"
-              android:background="@color/colorBackground"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/list_selector"
+                android:orientation="horizontal"
+                android:padding="5dip" >
 
-    <TableRow
-        android:background="@color/colorBackground"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <View
-            android:id="@+id/row_tab"
-            class="android.view.View"
-            android:layout_width="10dp"
-            android:layout_height="match_parent"/>
 
-        <TextView
-            android:id="@+id/row_personFirstName"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorBackground"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:padding="10dp"
-            android:text="Osoba"
-            android:textColor="@color/colorFont"
-            android:textSize="18sp"
-            />
-        <TextView
-            android:id="@+id/row_personLastName"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorBackground"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:padding="10dp"
-            android:text="Osoba"
-            android:textColor="@color/colorFont"
-            android:textSize="18sp"
-            />
-    </TableRow>
+    <LinearLayout android:id="@+id/thumbnail"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:padding="3dip"
+                  android:layout_alignParentLeft="true"
+                  android:background="@drawable/image_bg"
+                  android:layout_marginRight="5dip">
 
-    <TableRow
-        android:background="@color/colorBackground"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/row_personPhoto"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:src="@drawable/speaker1"/>
 
-        <TextView
-            android:id="@+id/row_company"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorBackground"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:padding="10dp"
-            android:text="company"
-            android:textColor="@color/colorFont"
-            android:textSize="14sp"
-            />
-    </TableRow>
+    </LinearLayout>
 
-    <View
 
-        class="android.view.View"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#ffffff"/>
+    <TextView
+        android:id="@+id/row_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/thumbnail"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:text="Name"
+        android:textColor="#040404"
 
-    <View
+        android:textSize="15dip"
+        android:textStyle="bold"
+        android:typeface="sans"/>
 
-        class="android.view.View"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#ffffff"/>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/row_personCompany"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/thumbnail"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:paddingTop="45px"
+        android:text="Company"
+
+        android:textColor="#040404"
+        android:textSize="15dip"
+        android:textStyle="normal"
+        android:typeface="sans"/>
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_right_black"/>
+
+</RelativeLayout>

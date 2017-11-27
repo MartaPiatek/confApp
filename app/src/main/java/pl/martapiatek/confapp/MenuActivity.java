@@ -1,14 +1,20 @@
 package pl.martapiatek.confapp;
 
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.NotificationCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,11 +38,11 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class MenuActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, Runnable {
 
     private Dialog splashDialog, dialog;
     private Handler handler;
-    private Button btnData;
+    private Button btnData, btnCreateNotification;
     private ConfAppDbAdapter mDbAdapter;
     private ConfAppSimpleCursorAdapter mCursorAdapter;
 
@@ -48,7 +54,9 @@ public class MenuActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        showSplashScreen();
+        handler = new Handler();
+        AsyncTask.execute(this);
 
 
         mDbAdapter = new ConfAppDbAdapter(this);
@@ -84,7 +92,16 @@ public class MenuActivity extends AppCompatActivity
             }
         });
 
+        btnCreateNotification = (Button) findViewById(R.id.btnCreateNotification);
+        btnCreateNotification.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
 
+                createNotification("Computer analysis of normal and pathological vocal folds oscillations from videolaryngostroboscopic images");
+
+
+
+            }
+        });
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -164,6 +181,9 @@ public class MenuActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_calendar) {
 
+            Intent myIntent = new Intent(MenuActivity.this,CalendarActivity.class);
+            startActivity(myIntent);
+
         } else if (id == R.id.nav_facebook) {
 
             Intent browserIntent = new Intent(Intent.ACTION_VIEW,
@@ -190,13 +210,11 @@ public class MenuActivity extends AppCompatActivity
             startActivity(myIntent);
 
         }
-        else if (id == R.id.nav_notification) {
 
-        }
         else if (id == R.id.nav_awards) {
 
-          //  Intent myIntent = new Intent(MenuActivity.this,SpeakersActivity.class);
-          //  startActivity(myIntent);
+            Intent myIntent = new Intent(MenuActivity.this,AwardActivity.class);
+            startActivity(myIntent);
 
         }
         else if (id == R.id.nav_aboutConference) {
@@ -257,7 +275,7 @@ public class MenuActivity extends AppCompatActivity
 
 
     private void insertSomeEvents() {
-        mDbAdapter.createEvent( "2017-02-10" , "B-2 aud. 100",
+        mDbAdapter.createEvent( "2017-11-10" , "B-2 aud. 100",
                 "Usage of ICP Algorithm for Initial Alignment in B-Splines FFD Image " +
                         "Registration in Breast Cancer Radiotherapy Planning ",
                 "Estimation of a resected tumor lodge localization after a breast cancer " +
@@ -274,10 +292,8 @@ public class MenuActivity extends AppCompatActivity
                 "Marek Wodzinski");
 
 
-        mDbAdapter.createEvent( "2017-02-10" , "B-2 aud. 122",
-                "Computer analysis of normal and pathological vocal \n" +
-                        "folds oscillations from videolaryngostroboscopic \n" +
-                        "images",
+        mDbAdapter.createEvent( "2017-11-10" , "B-2 aud. 122",
+                "Computer analysis of normal and pathological vocal folds oscillations from videolaryngostroboscopic images",
                 "Videostroboscopy is a common technique used by phoniatricians for diagnosing vocal" +
                         " folds status by imaging their oscillations. Implementation of image processing methods " +
                         "allows to extract qualitative description and quantitative indices. Such an analysis approach" +
@@ -291,7 +307,7 @@ public class MenuActivity extends AppCompatActivity
                         "voice disorders.",
                 "Bartosz Kopczyński");
 
-        mDbAdapter.createEvent( "2017-02-11" , "B-2 aud. 100",
+        mDbAdapter.createEvent( "2017-11-11" , "B-2 aud. 100",
                 "Optimal selection of wavelengths for estimation of oxy-, deoxy- hemoglobin and cytochrome-c-oxidase " +
                         "from time-resolved NIRS measurements  ",
                 "We analyze broadband near-infrared spectroscopic measurements obtained from newborn piglets " +
@@ -318,9 +334,7 @@ public class MenuActivity extends AppCompatActivity
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String date = df.format(Calendar.getInstance().getTime());
 
-        mDbAdapter.createNews( date, "Zmiana sali prezentacji"
-                ,"Zmiana sali prezentacji pt. \"Optimal selection of wavelengths for estimation of oxy-, " +
-                        "deoxy- hemoglobin and cytochrome-c-oxidase from time-resolved NIRS measurements\"");
+
         mDbAdapter.createNews( date, "Zmiana sali prezentacji"
                 ,"Zmiana sali prezentacji pt. \"Optimal selection of wavelengths for estimation of oxy-, " +
                         "deoxy- hemoglobin and cytochrome-c-oxidase from time-resolved NIRS measurements\"" ,
@@ -346,4 +360,58 @@ public class MenuActivity extends AppCompatActivity
 
     }
 
+
+
+    public void createNotification(String eventName) {
+        Intent intent = new Intent(this, MenuActivity.class);
+        PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.splashpeach);
+
+        Notification noti = new NotificationCompat.Builder(this)
+                               .setContentTitle("Zbliżające się wydarzenie!")
+                               .
+        setContentText("Niebawem rozpocznie się  " + eventName )
+                               .setSmallIcon(R.drawable.splashpeach)
+                              .setLargeIcon(icon)
+                                .setAutoCancel(true)
+                                .setContentIntent(pIntent)
+                                .build();
+
+
+
+                                NotificationManager notificationManager =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(0, noti);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        dismissSplashScreen();
+    }
+
+    private void showSplashScreen() {
+        splashDialog = new Dialog(this, R.style.splash_screen);
+        splashDialog.setContentView(R.layout.activity_splash);
+        splashDialog.setCancelable(false);
+        splashDialog.show();
+    }
+
+    private void dismissSplashScreen() {
+        if (splashDialog != null) {
+            splashDialog.dismiss();
+            splashDialog = null;
+        }
+    }
+    @Override
+    public void run() {
+        handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    dismissSplashScreen();
+                                }
+                            }, 5000
+        );
+    }
 }
