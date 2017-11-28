@@ -53,9 +53,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pl.martapiatek.confapp.MenuActivity"/>
         </activity>
-        <activity android:name=".SplashActivity"
-                  android:theme="@style/AppTheme.NoActionBar">
-
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name=".SpeakersActivity"
@@ -75,12 +75,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pl.martapiatek.confapp.MenuActivity"/>
         </activity>
-        <activity android:name=".SpeakerDetailsActivity"
-                  android:label=""
-                  android:theme="@style/AppTheme.NoActionBar">
-        <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value="pl.martapiatek.confapp.MenuActivity"/>
+        <activity
+            android:name=".SpeakerDetailsActivity"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pl.martapiatek.confapp.MenuActivity"/>
         </activity>
         <activity android:name=".EventsActivity">
         </activity>
@@ -142,10 +143,10 @@
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+            <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER"/>
+        </intent-filter>
         </activity>
         <activity
             android:name=".LoginActivity"
@@ -195,6 +196,11 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pl.martapiatek.confapp.MenuActivity"/>
+        </activity>
+        <activity
+            android:name=".Base2Activity"
+            android:label="@string/title_activity_base2"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 
