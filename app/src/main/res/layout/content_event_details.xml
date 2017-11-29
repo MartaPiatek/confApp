@@ -1,170 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="pl.martapiatek.confapp.EventDetailsActivity"
-    tools:showIn="@layout/activity_event_details"
-    android:background="@color/colorBackground">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
 
-
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
-        android:orientation="vertical"
-        android:paddingLeft="40px"
-        android:paddingRight="30px"
+        android:isScrollContainer="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context="pl.martapiatek.confapp.EventDetailsActivity"
-        tools:layout_editor_absoluteX="5dp"
-        tools:layout_editor_absoluteY="5dp">
+        tools:showIn="@layout/activity_event_details">
 
 
-        <TableRow
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txtViewEventTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.2"
-            android:background="@color/colorBackground">
+            android:layout_marginEnd="16dp"
 
-            <TextView
-                android:id="@+id/txtViewEventTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/colorBackground"
-                android:text="Tytuł"
-                android:textColor="@color/colorFont"
-                android:textSize="36sp"
-                android:textStyle="bold"/>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorBackground"
+            android:text="Tytuł"
+            android:textColor="@color/colorFont"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/txtViewEventSpeaker"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txtViewEventSpeaker"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2
-"
-            android:background="@color/colorBackground">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorBackground"
+            android:gravity="left"
+            android:text="Speaker"
+            android:textColor="@color/colorFont"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/txtViewEventDate"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtViewEventTitle"/>
 
-            <TextView
-                android:id="@+id/txtViewEventDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/colorBackground"
-                android:text="Date"
-                android:textColor="@color/colorFont"
-                android:textSize="24sp"/>
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txtViewEventLocation"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:background="@color/colorBackground">
+            android:layout_marginStart="16dp"
 
-            <TextView
-                android:id="@+id/txtViewEventLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:background="@color/colorBackground"
-                android:text="Lokalizacja"
-                android:textColor="@color/colorFont"
-                android:textSize="24sp"/>
-        </TableRow>
+            android:layout_marginTop="8dp"
+            android:background="@color/colorBackground"
+            android:gravity="left"
+            android:text="Lokalizacja"
+            android:textColor="@color/colorFont"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/txtViewEventDescription"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtViewEventDate"/>
 
-        <TableRow
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txtViewEventDate"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2
-"
-            android:background="@color/colorBackground">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorBackground"
+            android:gravity="left"
+            android:text="Date"
+            android:textColor="@color/colorFont"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/txtViewEventLocation"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtViewEventSpeaker"/>
 
-            <TextView
-                android:id="@+id/txtViewEventSpeaker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:background="@color/colorBackground"
-                android:text="Speaker"
-                android:textColor="@color/colorFont"
-                android:textSize="30sp"
-                android:textStyle="bold"/>
-        </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txtViewEventDescription"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorBackground">
+            android:layout_marginEnd="32dp"
 
-            <TextView
-                android:id="@+id/txtViewEventDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/colorBackground"
-                android:text="Opis"
-                android:textColor="@color/colorFont"
-                android:textSize="24sp"/>
-        </TableRow>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"/>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorBackground"
+            android:gravity="left"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Opis"
+            android:textColor="@color/colorFont"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnAddNote"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtViewEventLocation"/>
 
         <Button
             android:id="@+id/btnAddNote"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="150px"
-            android:layout_marginRight="150px"
-            android:layout_weight="0.2"
-            android:text="Dodaj notatkę"/>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"/>
-
-        <Button
-            android:id="@+id/btnAddCalendar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="150px"
-            android:layout_marginRight="150px"
-            android:layout_weight="0.2"
-            android:text="Dodaj do terminarza"/>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"/>
-
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text="Dodaj notatkę"
+            android:textColor="#3d3d3d"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnAddCalendar"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtViewEventDescription"/>
 
         <Button
             android:id="@+id/btnAddCalendarGoogle"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="150px"
-            android:layout_marginRight="150px"
-            android:layout_weight="0.2"
-            android:text="Dodaj do kalendarza Google"/>
+            android:layout_marginTop="8dp"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text="Dodaj do Google"
+            android:textColor="#3d3d3d"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAddCalendar"/>
 
-        <Space
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnAddCalendar"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"/>
-    </LinearLayout>
+            android:layout_marginTop="8dp"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text="Dodaj do terminarza"
+            android:textColor="#3d3d3d"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnAddCalendarGoogle"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnAddNote"/>
 
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

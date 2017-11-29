@@ -26,7 +26,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class EventDetailsActivity extends AppCompatActivity {
+public class EventDetailsActivity extends Base2Activity {
     private TextView txtViewEventDate, txtViewEventTitle, txtViewEventLocation, txtViewEventSpeaker,
             txtViewEventDescription, txtViewNoteText;
     private String sTitle, sDate, sLocation, sDescription, sSpeaker;
@@ -43,6 +43,8 @@ public class EventDetailsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        this.getSupportActionBar().setTitle("Szczegóły wydarzenia");
 
 
         txtViewEventDate = (TextView) findViewById(R.id.txtViewEventDate);
@@ -90,7 +92,7 @@ public class EventDetailsActivity extends AppCompatActivity {
                 mDbAdapter.createCalendarEvent(txtViewEventDate.getText().toString() ,
                         txtViewEventLocation.getText().toString(),
                         txtViewEventTitle.getText().toString());
-
+/*
                 //wyswietlanie zindywidualizowanego toasta
                 LayoutInflater inflater = getLayoutInflater();
                 View layout = inflater.inflate(R.layout.toast,
@@ -107,8 +109,9 @@ public class EventDetailsActivity extends AppCompatActivity {
                 toast.setView(layout);
                 toast.show();
 
-
-
+*/
+                Toast.makeText(getApplicationContext(), "Zapisano w kalendarzu",
+                        Toast.LENGTH_LONG).show();
             }
         });
 
