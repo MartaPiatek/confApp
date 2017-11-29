@@ -8,17 +8,6 @@
                 android:padding="5dip" >
 
 
-    <LinearLayout android:id="@+id/thumbnail"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:padding="3dip"
-                  android:layout_alignParentLeft="true"
-                  android:background="@drawable/image_bg"
-                  android:layout_marginRight="5dip">
-
-    </LinearLayout>
-
-
     <TextView
         android:id="@+id/row_notesTitle"
         android:layout_width="wrap_content"
@@ -35,7 +24,7 @@
 
 
     <TextView
-        android:id="@+id/row_newsContent"
+        android:id="@+id/row_notesContent"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/row_notesTitle"
@@ -48,20 +37,7 @@
 
 
     <TextView
-        android:id="@+id/row_newsPlace"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/row_notesTitle"
-        android:layout_marginTop="30dip"
-
-        android:layout_toRightOf="@+id/thumbnail"
-
-        android:textColor="#343434"
-        android:textSize="14sp"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/row_newsDate"
+        android:id="@+id/row_notesDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -73,6 +49,12 @@
         android:textSize="14sp"
         android:textStyle="bold"
         tools:text="11-11-2017"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_right_black"/>
 
 </RelativeLayout>

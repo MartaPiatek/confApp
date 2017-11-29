@@ -12,13 +12,10 @@
     android:layout_weight="1">
 
 
-
-
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.15"/>
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25"/>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -32,22 +29,76 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
+            <ImageButton
+                android:id="@+id/btnAgenda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonshape"
+                android:shadowColor="#A8A8A8"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:textColor="#3d3d3d"
+                android:textSize="14sp"
+                app:srcCompat="@drawable/ic_menu_agenda"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <ImageButton
+                android:id="@+id/btnTwitter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonshape"
+                android:shadowColor="#A8A8A8"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:textColor="#3d3d3d"
+                android:textSize="14sp"
+                app:srcCompat="@drawable/ic_twitter"/>
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
+            <ImageButton
+                android:id="@+id/btnFacobook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonshape"
+                android:shadowColor="#A8A8A8"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:textColor="#3d3d3d"
+                android:textSize="14sp"
+                app:srcCompat="@drawable/ic_facebook_square_button"/>
+
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
+
 
             <Button
                 android:id="@+id/btnCreateNotification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Pokaż powiadomienie"/>
+
+                android:text="Pokaż powiadomienie"
+                android:textColor="#3d3d3d"
+                android:textSize="14sp"
+                android:background="@drawable/buttonshape"
+                android:shadowColor="#A8A8A8"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                />
+
+
+
+
 
             <Space
                 android:layout_width="match_parent"
@@ -58,8 +109,15 @@
                 android:id="@+id/btnData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Załaduj przykładowe dane"/>
+
+                android:text="Załaduj przykładowe dane"
+                android:textColor="#3d3d3d"
+                android:textSize="14sp"
+                android:background="@drawable/buttonshape"
+                android:shadowColor="#A8A8A8"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"/>
 
             <Space
                 android:layout_width="match_parent"
@@ -73,9 +131,9 @@
 
         </LinearLayout>
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.15"/>
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25"/>
 
     </LinearLayout>

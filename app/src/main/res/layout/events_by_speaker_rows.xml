@@ -10,14 +10,15 @@
     <!--  ListRow Left sied Thumbnail image -->
 
     <TextView
-        android:id="@+id/row_title"
+        android:id="@+id/row_notesTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/thumbnail"
+        android:layout_marginRight="25dp"
         android:layout_marginTop="15px"
         android:layout_toRightOf="@+id/thumbnail"
-        android:text="Title"
 
+        android:text="Title"
         android:textColor="#040404"
         android:textSize="12sp"
         android:textStyle="bold"

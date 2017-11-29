@@ -49,7 +49,13 @@
             android:fontFamily="sans-serif"
             android:text="wyślij"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#3d3d3d"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

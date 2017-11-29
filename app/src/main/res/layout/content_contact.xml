@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
 
+    android:background="@color/colorBackground"
     tools:context="pl.martapiatek.confapp.ContactActivity">
-
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:background="@color/colorBackground"
         android:orientation="vertical"
         android:weightSum="1"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp"
-        android:background="@color/colorBackground">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="8dp">
 
         <TextView
-            android:background="@color/colorBackground"
             android:id="@+id/page_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginStart="0dp"
             android:layout_marginTop="16dp"
+            android:background="@color/colorBackground"
             android:fontFamily="sans-serif"
             android:text="Kontakt"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textStyle="bold"
             android:textColor="@color/colorFont"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:background="@color/colorBackground"
             android:id="@+id/about_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,28 +50,35 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_weight="0.15"
+            android:background="@color/colorBackground"
             android:fontFamily="sans-serif"
             android:paddingTop="20dp"
             android:text=" Marta Piątek \n Email: confapp@gmail.com"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/colorFont"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/colorFont"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/page_title" />
+            app:layout_constraintTop_toBottomOf="@+id/page_title"/>
 
         <Button
             android:id="@+id/btnMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorBackground"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8"
+
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
             android:text="Napisz wiadomość"
 
+            android:textColor="@color/colorBackground"
             android:textSize="18sp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="0dp" />
+            tools:layout_editor_absoluteY="0dp"/>
 
     </LinearLayout>
 
