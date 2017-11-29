@@ -1,7 +1,6 @@
 package pl.martapiatek.confapp;
 
 import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -10,7 +9,7 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-public class SpeakerDetailsActivity extends AppCompatActivity {
+public class SpeakerDetailsActivity extends Base2Activity {
 
     private TextView txtViewSpeakerName, txtViewSpeakerDescription;
     private String sTitle, sName, sDescription;
@@ -66,7 +65,7 @@ public class SpeakerDetailsActivity extends AppCompatActivity {
         // do identyfikatorów widoków w układzie graficznym
         int[] to = new int[]{
 
-                R.id.row_title
+                R.id.row_notesTitle
 
 
         };

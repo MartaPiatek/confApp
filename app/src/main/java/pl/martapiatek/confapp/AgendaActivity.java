@@ -2,17 +2,15 @@ package pl.martapiatek.confapp;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.support.v7.widget.Toolbar;
 
 import pl.martapiatek.confapp.domain.Event;
 
 
-public class AgendaActivity extends AppCompatActivity {
+public class AgendaActivity extends Base2Activity {
     private ListView mListView;
     private ConfAppDbAdapter mDbAdapter;
     private ConfAppSimpleCursorAdapter mCursorAdapter;
@@ -21,10 +19,24 @@ public class AgendaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agenda);
+     //   this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//
+      //  this.getSupportActionBar().setTitle("Agenda");
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      //  Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+
+
+     //   toolbar.setEnabled(true);
+      //  setSupportActionBar(toolbar);
+
+    //    toolbar.setNavigationIcon(R.drawable.ic_hamburger);
+    //    getSupportActionBar().setHomeButtonEnabled(true);
+
+
+
+
+//
 
         mListView = (ListView) findViewById(R.id.agenda_list_view);
         mListView.setDivider(null);
@@ -51,7 +63,7 @@ public class AgendaActivity extends AppCompatActivity {
 
         // do identyfikatorów widoków w układzie graficznym
         int[] to = new int[]{
-                R.id.row_title
+                R.id.row_notesTitle
 
 
         };
@@ -92,6 +104,9 @@ public class AgendaActivity extends AppCompatActivity {
         );
 
     } // onCreate
+
+
+
 
     private int getIdFromPosition(int nC) {
         return (int)mCursorAdapter.getItemId(nC);

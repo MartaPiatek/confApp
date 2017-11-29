@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-public class GalleryActivity extends AppCompatActivity {
+public class GalleryActivity extends Base2Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

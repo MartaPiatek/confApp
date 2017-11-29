@@ -2,7 +2,6 @@ package pl.martapiatek.confapp;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -11,7 +10,7 @@ import android.widget.ListView;
 
 import pl.martapiatek.confapp.domain.Event;
 
-public class EventsByDayActivity extends AppCompatActivity {
+public class EventsByDayActivity extends Base2Activity {
 
     private ListView mListView;
     private ConfAppDbAdapter mDbAdapter;
@@ -51,7 +50,7 @@ public class EventsByDayActivity extends AppCompatActivity {
 
         // do identyfikatorów widoków w układzie graficznym
         int[] to = new int[]{
-                R.id.row_title,
+                R.id.row_notesTitle,
                 R.id.row_date,
                 R.id.row_location
 

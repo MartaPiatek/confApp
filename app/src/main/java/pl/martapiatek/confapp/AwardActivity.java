@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-public class AwardActivity extends AppCompatActivity {
+public class AwardActivity extends Base2Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

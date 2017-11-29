@@ -1,11 +1,10 @@
 package pl.martapiatek.confapp;
 
 import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-public class CalendarActivity extends AppCompatActivity {
+public class CalendarActivity extends Base2Activity {
 
         private ListView mListView;
         private ConfAppDbAdapter mDbAdapter;
@@ -37,7 +36,7 @@ public class CalendarActivity extends AppCompatActivity {
             int[] to = new int[]{
                     R.id.row_date,
                     R.id.row_location,
-                    R.id.row_title
+                    R.id.row_notesTitle
 
             };
 

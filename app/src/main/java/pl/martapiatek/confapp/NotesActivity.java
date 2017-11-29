@@ -10,12 +10,11 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
-public class NotesActivity extends AppCompatActivity {
+public class NotesActivity extends Base2Activity {
 
     private ListView mListView;
     private ConfAppDbAdapter mDbAdapter;
     private ConfAppSimpleCursorAdapter mCursorAdapter;
-    private ImageButton imageBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +30,6 @@ public class NotesActivity extends AppCompatActivity {
         mListView.setDivider(null);
         mDbAdapter = new ConfAppDbAdapter(this);
         mDbAdapter.open();
-
-        //dodaj przykładowe dane
-        insertSomeNotes();
 
         Cursor cursor = mDbAdapter.fetchAllNotes();
 
@@ -56,7 +52,7 @@ public class NotesActivity extends AppCompatActivity {
                 // kontekst
                 NotesActivity.this,
                 // układ graficzny wiersza
-                R.layout.notes_rows,
+                R.layout.note_rows,
                 // kursor
                 cursor,
                 // z kolumn zdefiniowanych w bazie danych

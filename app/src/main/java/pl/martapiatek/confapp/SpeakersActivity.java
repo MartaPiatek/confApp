@@ -2,7 +2,6 @@ package pl.martapiatek.confapp;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -12,7 +11,7 @@ import android.widget.ListView;
 
 import pl.martapiatek.confapp.domain.Speaker;
 
-public class SpeakersActivity extends AppCompatActivity {
+public class SpeakersActivity extends Base2Activity {
 
     private ListView mListView;
     private ConfAppDbAdapter mDbAdapter;
@@ -26,7 +25,7 @@ public class SpeakersActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+     //   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mListView = (ListView) findViewById(R.id.reminders_list_view);
         mListView.setDivider(null);
@@ -50,7 +49,7 @@ public class SpeakersActivity extends AppCompatActivity {
 
         // do identyfikatorów widoków w układzie graficznym
         int[] to = new int[]{
-                R.id.row_title,
+                R.id.row_notesTitle,
                 R.id.row_personCompany
 
 

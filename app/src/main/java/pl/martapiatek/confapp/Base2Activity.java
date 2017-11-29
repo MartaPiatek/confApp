@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -56,17 +57,20 @@ public class Base2Activity extends AppCompatActivity {
         toolbar.setTitle("");
         this.getSupportActionBar().setElevation(0);
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorFont));
-        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         if (useToolbar()) {
             setSupportActionBar(toolbar);
             setTitle("Places Near Me");
+         //   mDrawerToggle.setDrawerIndicatorEnabled(false);
+         //   this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         } else {
             toolbar.setVisibility(View.GONE);
         }
 
-
+      //  getSupportActionBar().setHomeButtonEnabled(true);
 
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
 
@@ -85,13 +89,49 @@ public class Base2Activity extends AppCompatActivity {
 
                 switch (menuItem.getItemId()) {
                     case R.id.nav_aboutConference:
-                        Intent myIntent = new Intent(getApplicationContext(),ConferenceActivity.class);
-                        startActivity(myIntent);
+
+                        startActivity(new Intent(getApplicationContext(),ConferenceActivity.class));
                         return true;
                     case R.id.nav_agenda:
-                        Intent myIntent2 = new Intent(getApplicationContext(),AgendaActivity.class);
-                        startActivity(myIntent2);
+
+                        startActivity(new Intent (getApplicationContext(),AgendaActivity.class));
                         return true;
+
+                    case R.id.nav_awards:
+
+                        startActivity(new Intent (getApplicationContext(),AwardActivity.class));
+                        return true;
+                    case R.id.nav_calendar:
+
+                        startActivity(new Intent (getApplicationContext(),CalendarActivity.class));
+                        return true;
+
+                    case R.id.nav_contact:
+
+                        startActivity(new Intent (getApplicationContext(),ContactActivity.class));
+                        return true;
+
+                    case R.id.nav_help:
+
+                        //startActivity(new Intent (getApplicationContext(),HelpActivity.class));
+                        return true;
+                    case R.id.nav_maps:
+
+                        startActivity(new Intent (getApplicationContext(),MapsActivity.class));
+                        return true;
+                    case R.id.nav_news:
+
+                        startActivity(new Intent (getApplicationContext(),NewsActivity.class));
+                        return true;
+                    case R.id.nav_notes:
+
+                        startActivity(new Intent (getApplicationContext(),NotesActivity.class));
+                        return true;
+                    case R.id.nav_speakers:
+
+                        startActivity(new Intent (getApplicationContext(),SpeakersActivity.class));
+                        return true;
+
                     default:
                         Toast.makeText(getApplicationContext(), "Work in progress", Toast.LENGTH_SHORT).show();
                         return true;
@@ -102,9 +142,13 @@ public class Base2Activity extends AppCompatActivity {
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         View header = navigationView.getHeaderView(0);
+        //drawerLayout.closeDrawer(GravityCompat.START);
 
 
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,  R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+       // ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,  R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+
+                mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,  R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+
 
             @Override
             public void onDrawerClosed(View drawerView) {
@@ -119,13 +163,18 @@ public class Base2Activity extends AppCompatActivity {
         };
 
 
-        actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.colorFont));
+     //   actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.colorFont));
+     //   actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
+        mDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.colorFont));
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
 
-
-        drawerLayout.setDrawerListener(actionBarDrawerToggle);
-
-
-        actionBarDrawerToggle.syncState();
+        //actionBarDrawerToggle.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
+       // actionBarDrawerToggle.setDrawerArrowDrawable(R.drawable.ic_arrow_back_black_24dp);
+      //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+     //   drawerLayout.setDrawerListener(actionBarDrawerToggle);
+        drawerLayout.setDrawerListener( mDrawerToggle);
+        mDrawerToggle.syncState();
+    //    actionBarDrawerToggle.syncState();
     }
 
     @Override

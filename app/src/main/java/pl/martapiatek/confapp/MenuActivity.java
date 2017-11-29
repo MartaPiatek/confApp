@@ -28,6 +28,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,9 +41,9 @@ import java.util.Locale;
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Dialog splashDialog, dialog;
-    private Handler handler;
+    private Dialog dialog;
     private Button btnData, btnCreateNotification;
+    private ImageButton btnFacebook, btnTwitter, btnAgenda;
     private ConfAppDbAdapter mDbAdapter;
     private ConfAppSimpleCursorAdapter mCursorAdapter;
 
@@ -62,6 +63,39 @@ public class MenuActivity extends AppCompatActivity
         mDbAdapter = new ConfAppDbAdapter(this);
         mDbAdapter.open();
 
+        btnFacebook = (ImageButton) findViewById(R.id.btnFacobook);
+        btnFacebook.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://www.facebook.com/Students.Science.Conference/?ref=br_rs"));
+                startActivity(browserIntent);
+
+
+            }
+        });
+
+        btnTwitter = (ImageButton) findViewById(R.id.btnTwitter);
+        btnTwitter.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/SSCPWr"));
+                startActivity(browserIntent);
+
+
+            }
+        });
+
+        btnAgenda = (ImageButton) findViewById(R.id.btnAgenda);
+        btnAgenda.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                Intent myIntent = new Intent(MenuActivity.this,AgendaActivity.class);
+                startActivity(myIntent);
+
+
+            }
+        });
 
         btnData = (Button) findViewById(R.id.btnData);
         btnData.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +143,11 @@ public class MenuActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+
+        getSupportActionBar().setHomeButtonEnabled(true);
+        toolbar.setNavigationIcon(R.drawable.ic_hamburger);
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
