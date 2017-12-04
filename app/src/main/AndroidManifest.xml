@@ -143,10 +143,10 @@
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN"/>
 
-            <category android:name="android.intent.category.LAUNCHER"/>
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".LoginActivity"
@@ -201,6 +201,15 @@
             android:name=".Base2Activity"
             android:label="@string/title_activity_base2"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".NoteDetailsActivity"
+            android:label="@string/title_activity_note_details"
+            android:parentActivityName=".NotesActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pl.martapiatek.confapp.NotesActivity"/>
         </activity>
     </application>
 

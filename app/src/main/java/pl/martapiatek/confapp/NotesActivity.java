@@ -64,19 +64,19 @@ public class NotesActivity extends Base2Activity {
 
         mListView.setAdapter(mCursorAdapter);
 
-     /*   mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                                              @Override
                                              public void onItemClick(AdapterView<?> parent, View view, final int masterListPosition, long id) {
 
 
-                                                 Speaker speaker =  mDbAdapter.fetchSpeakerById(getIdFromPosition(masterListPosition));
+                                               //  Speaker speaker =  mDbAdapter.fetchSpeakerById(getIdFromPosition(masterListPosition));
 
-                                                 Intent myIntent = new Intent(view.getContext(),SpeakerDetailsActivity.class);
-                                                 myIntent.putExtra("SPEAKER_TITLE", speaker.getTitle());
-                                                 myIntent.putExtra("SPEAKER_FIRST_NAME", speaker.getFirstName());
-                                                 myIntent.putExtra("SPEAKER_LAST_NAME", speaker.getLastName());
-                                                 myIntent.putExtra("SPEAKER_DESCRIPTION", speaker.getDescription());
+                                                 Intent myIntent = new Intent(view.getContext(),NoteDetailsActivity.class);
+                                               //  myIntent.putExtra("SPEAKER_TITLE", speaker.getTitle());
+                                               //  myIntent.putExtra("SPEAKER_FIRST_NAME", speaker.getFirstName());
+                                                // myIntent.putExtra("SPEAKER_LAST_NAME", speaker.getLastName());
+                                                // myIntent.putExtra("SPEAKER_DESCRIPTION", speaker.getDescription());
 
                                                  startActivity(myIntent);
 
@@ -84,7 +84,7 @@ public class NotesActivity extends Base2Activity {
                                              }
                                          }
         );
-*/
+
 
     } // onCreate
 
