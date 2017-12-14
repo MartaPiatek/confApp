@@ -6,8 +6,11 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
-public class SplashActivity extends AppCompatActivity implements Runnable{
+public class SplashActivity extends AppCompatActivity {
 
     private Dialog splashDialog, dialog;
     private Handler handler;
@@ -17,55 +20,32 @@ public class SplashActivity extends AppCompatActivity implements Runnable{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        showSplashScreen();
-          handler = new Handler();
-         AsyncTask.execute(this);
+
+        ImageView imageView = findViewById(R.id.imageView);
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
+
+        imageView.startAnimation(animation);
+
+        Thread timer = new Thread(){
+            @Override
+            public void run() {
+
+                try {
+                    sleep(5000);
+                    Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                    super.run();
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
 
+            }
+        };
 
-          Intent intent = new Intent(SplashActivity.this, MenuActivity.class);
-        startActivity(intent);
-     //
-       // finish();
-
-
+        timer.start();
     }
-
-
-
-
-
-
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        dismissSplashScreen();
-    }
-
-    private void showSplashScreen() {
-        splashDialog = new Dialog(this, R.style.splash_screen);
-        splashDialog.setContentView(R.layout.activity_splash);
-        splashDialog.setCancelable(false);
-        splashDialog.show();
-    }
-
-    private void dismissSplashScreen() {
-        if (splashDialog != null) {
-            splashDialog.dismiss();
-            splashDialog = null;
-        }
-    }
-    @Override
-    public void run() {
-        handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    dismissSplashScreen();
-                                }
-                            }, 2000
-        );
-    }
-
-
 }
