@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import pl.martapiatek.confapp.domain.Event;
+import pl.martapiatek.confapp.domain.Note;
 import pl.martapiatek.confapp.domain.Speaker;
 import pl.martapiatek.confapp.domain.User;
 
@@ -321,6 +322,24 @@ public class ConfAppDbAdapter {
                 cursor.getString(INDEX_EVENT_TITLE),
                 cursor.getString(INDEX_EVENT_DESCRIPTION),
                 cursor.getString(INDEX_EVENT_SPEAKER)
+        );
+    }
+
+    public Note fetchNoteById(int id) {
+
+        Cursor cursor = mDb.query(TABLE_NOTE_NAME, new String[]{COL_NOTE_ID,
+                         COL_NOTE_TITLE, COL_NOTE_CONTENT, COL_NOTE_DATE}, COL_NOTE_ID + "=?",
+                new String[]{String.valueOf(id)}, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        return new Note(
+                cursor.getInt(INDEX_NOTE_ID),
+                cursor.getString(INDEX_NOTE_TITLE),
+                cursor.getString(INDEX_NOTE_CONTENT),
+                cursor.getString(INDEX_NOTE_DATE)
+
+
         );
     }
 

@@ -202,15 +202,6 @@
             android:label="@string/title_activity_base2"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity
-            android:name=".NoteDetailsActivity"
-            android:label="@string/title_activity_note_details"
-            android:parentActivityName=".NotesActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="pl.martapiatek.confapp.NotesActivity"/>
-        </activity>
     </application>
 
 </manifest>

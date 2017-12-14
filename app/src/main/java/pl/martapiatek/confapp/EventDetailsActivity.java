@@ -32,7 +32,7 @@ public class EventDetailsActivity extends Base2Activity {
     private String sTitle, sDate, sLocation, sDescription, sSpeaker;
     private ListView mListView;
     private ConfAppDbAdapter mDbAdapter;
-    private Button btnAddNote, btnSaveNote, btnCancel, btnAddCalendar, getBtnAddCalendarGoogle;
+    private Button btnAddNote, btnSaveNote, btnCancel, btnAddCalendar, btnAddCalendarGoogle;
     private Dialog dialogNote;
 
     @Override
@@ -56,6 +56,7 @@ public class EventDetailsActivity extends Base2Activity {
 
         btnAddNote = (Button) findViewById(R.id.btnAddNote);
 
+
         mDbAdapter = new ConfAppDbAdapter(this);
         mDbAdapter.open();
 
@@ -77,7 +78,7 @@ public class EventDetailsActivity extends Base2Activity {
         dialogNote = new Dialog(EventDetailsActivity.this, R.style.Theme_AppCompat_Dialog_Alert);
         dialogNote.setContentView(R.layout.note);
 
-        getBtnAddCalendarGoogle = (Button) findViewById(R.id.btnAddCalendarGoogle);
+        btnAddCalendarGoogle = (Button) findViewById(R.id.btnAddCalendarGoogle);
         btnAddCalendar = (Button) findViewById(R.id.btnAddCalendar);
         btnSaveNote = (Button) dialogNote.findViewById(R.id.btnSave);
         btnCancel = (Button) dialogNote.findViewById(R.id.btnCancel);
@@ -116,7 +117,7 @@ public class EventDetailsActivity extends Base2Activity {
         });
 
 
-        getBtnAddCalendarGoogle.setOnClickListener(new View.OnClickListener() {
+       btnAddCalendarGoogle.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
 
