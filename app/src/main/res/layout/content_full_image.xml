@@ -9,28 +9,10 @@
     tools:context="pl.martapiatek.confapp.FullImageActivity"
     tools:showIn="@layout/activity_full_image">
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <android.support.v4.view.ViewPager
+
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorBackground"
-        android:paddingBottom="0dp"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:paddingTop="0dp"
-        tools:context="pl.martapiatek.confapp.FullImageActivity">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:scaleType="fitCenter"
-
-            />
-    </RelativeLayout>
+        android:layout_height="match_parent"/>
 
 </android.support.constraint.ConstraintLayout>

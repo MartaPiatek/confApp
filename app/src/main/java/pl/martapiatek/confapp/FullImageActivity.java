@@ -4,12 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 
 public class FullImageActivity extends AppCompatActivity {
+
+    ViewPager viewPager;
+    CustomSwip customSwip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +22,7 @@ public class FullImageActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Intent intent = getIntent();
+      /*  Intent intent = getIntent();
 
         int position = intent.getExtras().getInt("id");
         ImageAdapter adapter = new ImageAdapter(this);
@@ -26,6 +30,12 @@ public class FullImageActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
         imageView.setImageResource(adapter.images[position]);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        */
+
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        customSwip = new CustomSwip(this);
+        viewPager.setAdapter(customSwip);
     }
 
 }

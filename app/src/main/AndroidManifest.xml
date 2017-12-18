@@ -147,7 +147,6 @@
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
         <activity
             android:name=".LoginActivity"
@@ -202,6 +201,8 @@
             android:name=".Base2Activity"
             android:label="@string/title_activity_base2"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".CustomSwipActivity">
         </activity>
     </application>
 
