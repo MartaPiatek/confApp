@@ -11,49 +11,35 @@
     tools:showIn="@layout/activity_conference">
 
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ImageView
+        android:id="@+id/imageViewConference"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="150dp"
 
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-
-        android:background="@color/colorBackground"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txtViewAboutConference"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context="pl.martapiatek.confapp.ConferenceActivity">
+        app:srcCompat="@drawable/codeeurope"/>
 
+    <TextView
+        android:id="@+id/txtViewAboutConference"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.2"
-            app:srcCompat="@drawable/about"/>
-
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.7"
-            android:editable="false"
-            android:ems="10"
-            android:enabled="false"
-            android:focusable="false"
-
-            android:inputType="textMultiLine"
-            android:text="The Cosmetic Science Excellence Highway will lead to Milan, a modern and vibrant metropolis, the Italian capital for economy, fashion and design, a paradise for shopping, trendy, rich with things to do, changing every day! Milan offers top class services, cultural events, shows, artistic spots, education and research institutes; the Conference will be held in MiCo, the largest European Convention Centre, right in the hearth of the modern Milan!"
-            android:textColor="@color/colorFont"/>
-
-    </LinearLayout>
-
-
+        android:layout_marginBottom="50dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:ems="10"
+        android:enabled="false"
+        android:focusable="false"
+        android:inputType="textMultiLine"
+        android:text="@string/aboutConference"
+        android:textColor="@color/colorFont"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewConference"/>
 
 
 </android.support.constraint.ConstraintLayout>

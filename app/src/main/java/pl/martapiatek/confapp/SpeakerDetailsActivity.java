@@ -65,7 +65,7 @@ public class SpeakerDetailsActivity extends Base2Activity {
         // do identyfikatorów widoków w układzie graficznym
         int[] to = new int[]{
 
-                R.id.row_notesTitle
+                R.id.row_title
 
 
         };

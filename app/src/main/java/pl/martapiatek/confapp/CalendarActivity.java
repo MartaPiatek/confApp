@@ -36,7 +36,7 @@ public class CalendarActivity extends Base2Activity {
             int[] to = new int[]{
                     R.id.row_date,
                     R.id.row_location,
-                    R.id.row_notesTitle
+                    R.id.row_title
 
             };
 

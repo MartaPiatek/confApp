@@ -58,7 +58,7 @@
                     android:shadowDx="0"
                     android:shadowDy="0"
                     android:shadowRadius="5"
-                    android:text="Pokaż plan"
+                    android:text="@string/content_maps_btn_building_plan"
                     android:textColor="#3d3d3d"
                     android:textSize="14sp"/>
 
@@ -72,7 +72,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Pokaż trasę"
+                    android:text="@string/content_maps_btn_navigation"
                     android:textColor="#3d3d3d"
                     android:textSize="14sp"
                     android:background="@drawable/buttonshape"

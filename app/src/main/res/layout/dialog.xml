@@ -15,8 +15,8 @@
         android:layout_height="0dp"
         android:layout_weight="0.2"
         android:gravity="center_horizontal"
-        android:paddingBottom="10px"
-        android:text="Wyjście"
+        android:paddingBottom="10dp"
+        android:text="@string/dialog_title"
         android:textColor="@color/colorFont"
         android:textSize="18sp"/>
 
@@ -27,8 +27,8 @@
         android:layout_height="0dp"
         android:layout_weight="0.3"
         android:gravity="center_horizontal"
-        android:paddingBottom="10px"
-        android:text="Czy chcesz wyjść z aplikacji?"
+        android:paddingBottom="10dp"
+        android:text="@string/dialog_text"
         android:textColor="@color/colorFont"
         android:textSize="14sp"/>
 
@@ -51,7 +51,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.35"
-            android:text="Tak"
+            android:text="@string/dialog_btn_yes"
             android:textColor="#3d3d3d"
             android:textSize="14sp"
             android:background="@drawable/buttonshape"
@@ -72,7 +72,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.35"
-            android:text="Nie"
+            android:text="@string/dialog_btn_no"
             android:textColor="#3d3d3d"
             android:textSize="14sp"
             android:background="@drawable/buttonshape"

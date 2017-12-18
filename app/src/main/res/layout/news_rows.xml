@@ -8,25 +8,14 @@
                 android:padding="5dip" >
 
 
-    <LinearLayout android:id="@+id/thumbnail"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:padding="3dip"
-                  android:layout_alignParentLeft="true"
-                  android:background="@drawable/image_bg"
-                  android:layout_marginRight="5dip">
-
-    </LinearLayout>
-
-
     <TextView
-        android:id="@+id/row_notesTitle"
+        android:id="@+id/row_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/thumbnail"
+
         android:layout_marginRight="25dp"
-        android:layout_toRightOf="@+id/thumbnail"
-        android:text="Title"
+
+        android:text="@string/news_rows_title"
 
         android:textColor="#040404"
         android:textSize="20sp"
@@ -38,11 +27,11 @@
         android:id="@+id/row_newsContent"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/row_notesTitle"
+        android:layout_below="@id/row_title"
         android:layout_marginTop="1dip"
 
-        android:layout_toRightOf="@+id/thumbnail"
-        android:text="Text"
+
+        android:text="@string/news_rows_newsContent"
         android:textColor="#343434"
         android:textSize="14sp"/>
 
@@ -51,11 +40,12 @@
         android:id="@+id/row_newsPlace"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/row_notesTitle"
+        android:layout_below="@id/row_title"
         android:layout_marginTop="30dip"
 
-        android:layout_toRightOf="@+id/thumbnail"
 
+
+        android:text="@string/news_rows_place"
         android:textColor="#343434"
         android:textSize="14sp"
         android:textStyle="bold"/>
@@ -65,10 +55,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@id/row_notesTitle"
-        android:layout_marginRight="25dip"
+        android:layout_alignTop="@id/row_title"
+        android:layout_marginRight="25dp"
         android:gravity="right"
 
+        android:text="@string/news_rows_date"
         android:textColor="#10bcc9"
         android:textSize="14sp"
         android:textStyle="bold"

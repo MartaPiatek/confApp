@@ -40,7 +40,7 @@ public class EventsActivity extends AppCompatActivity {
         int[] to = new int[]{
                 R.id.row_date,
                 R.id.row_location,
-                R.id.row_notesTitle,
+                R.id.row_title,
                 R.id.row_description,
                 R.id.row_speakerName
 

@@ -50,7 +50,7 @@ public class EventsByDayActivity extends Base2Activity {
 
         // do identyfikatorów widoków w układzie graficznym
         int[] to = new int[]{
-                R.id.row_notesTitle,
+                R.id.row_title,
                 R.id.row_date,
                 R.id.row_location
 

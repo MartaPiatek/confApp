@@ -4,7 +4,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/list_selector"
                 android:orientation="horizontal"
-                android:padding="5dip" >
+                android:padding="5dp" >
 
 
 
@@ -14,27 +14,27 @@
                   android:padding="3dip"
                   android:layout_alignParentLeft="true"
                   android:background="@drawable/image_bg"
-                  android:layout_marginRight="5dip">
+                  android:layout_marginRight="5dp">
 
         <ImageView
             android:id="@+id/row_personPhoto"
-            android:layout_width="50dip"
-            android:layout_height="50dip"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/speaker1"/>
 
     </LinearLayout>
 
 
     <TextView
-        android:id="@+id/row_notesTitle"
+        android:id="@+id/row_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/thumbnail"
         android:layout_toRightOf="@+id/thumbnail"
-        android:text="Name"
+        android:text="@string/speakers_row_name"
         android:textColor="#040404"
 
-        android:textSize="15dip"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:typeface="sans"/>
 
@@ -45,11 +45,11 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/thumbnail"
         android:layout_toRightOf="@+id/thumbnail"
-        android:paddingTop="45px"
-        android:text="Company"
+        android:paddingTop="45dp"
+        android:text="@string/speakers_rows_affiliation"
 
         android:textColor="#040404"
-        android:textSize="15dip"
+        android:textSize="15sp"
         android:textStyle="normal"
         android:typeface="sans"/>
 

@@ -40,7 +40,7 @@
         android:layout_height="50dp">
 
         <TextView
-            android:id="@+id/row_notesTitle"
+            android:id="@+id/row_title"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"

@@ -1,20 +1,25 @@
 package pl.martapiatek.confapp;
 
-import android.content.Intent;
+import android.app.Dialog;
 import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import pl.martapiatek.confapp.domain.Note;
 
 public class NotesActivity extends Base2Activity {
 
     private ListView mListView;
     private ConfAppDbAdapter mDbAdapter;
     private ConfAppSimpleCursorAdapter mCursorAdapter;
+    private Dialog dialogNote;
+    private TextView txtViewNoteText, txtViewNoteTitle;
+    private Button btnAddNote, btnSaveNote, btnCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +48,7 @@ public class NotesActivity extends Base2Activity {
         // do identyfikatorów widoków w układzie graficznym
         int[] to = new int[]{
                 R.id.row_notesDate,
-                R.id.row_notesTitle,
+                R.id.row_title,
                 R.id.row_notesContent
 
         };
@@ -64,21 +69,43 @@ public class NotesActivity extends Base2Activity {
 
         mListView.setAdapter(mCursorAdapter);
 
+
+        dialogNote = new Dialog(NotesActivity.this, R.style.Theme_AppCompat_Dialog_Alert);
+        dialogNote.setContentView(R.layout.note);
+
+
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                                              @Override
                                              public void onItemClick(AdapterView<?> parent, View view, final int masterListPosition, long id) {
 
 
-                                               //  Speaker speaker =  mDbAdapter.fetchSpeakerById(getIdFromPosition(masterListPosition));
+                                                 //  Speaker speaker =  mDbAdapter.fetchSpeakerById(getIdFromPosition(masterListPosition));
 
-                                                 Intent myIntent = new Intent(view.getContext(),NoteDetailsActivity.class);
-                                               //  myIntent.putExtra("SPEAKER_TITLE", speaker.getTitle());
-                                               //  myIntent.putExtra("SPEAKER_FIRST_NAME", speaker.getFirstName());
-                                                // myIntent.putExtra("SPEAKER_LAST_NAME", speaker.getLastName());
-                                                // myIntent.putExtra("SPEAKER_DESCRIPTION", speaker.getDescription());
+                                                 //   Intent myIntent = new Intent(view.getContext(),NoteDetailsActivity.class);
+                                                 //  myIntent.putExtra("SPEAKER_TITLE", speaker.getTitle());
+                                                 //  myIntent.putExtra("SPEAKER_FIRST_NAME", speaker.getFirstName());
+                                                 // myIntent.putExtra("SPEAKER_LAST_NAME", speaker.getLastName());
+                                                 // myIntent.putExtra("SPEAKER_DESCRIPTION", speaker.getDescription());
 
-                                                 startActivity(myIntent);
+                                                 //   startActivity(myIntent);
+
+                                                 Note note = mDbAdapter.fetchNoteById(getIdFromPosition(masterListPosition));
+
+
+
+
+                                                 txtViewNoteText = (TextView) dialogNote.findViewById(R.id.txtViewDialogText);
+                                                 txtViewNoteTitle = (TextView) dialogNote.findViewById(R.id.txtViewDialogTitle);
+
+                                                 txtViewNoteTitle.setText("Tytuł");
+                                                 txtViewNoteText.setText(note.getContent());
+                                                 btnSaveNote = (Button) dialogNote.findViewById(R.id.btnSave);
+                                                 btnCancel = (Button) dialogNote.findViewById(R.id.btnCancel);
+
+
+                                                 dialogNote.show();
+
 
 
                                              }
@@ -89,7 +116,7 @@ public class NotesActivity extends Base2Activity {
     } // onCreate
 
     private int getIdFromPosition(int nC) {
-        return (int)mCursorAdapter.getItemId(nC);
+        return (int) mCursorAdapter.getItemId(nC);
     }
 
     private void insertSomeNotes() {

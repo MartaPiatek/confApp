@@ -60,10 +60,6 @@ public class MenuActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //  showSplashScreen();
-        //  handler = new Handler();
-        // AsyncTask.execute(this);
-
       // mDbAdapter = new ConfAppDbAdapter(this);
      //   mDbAdapter.open();
 
@@ -104,8 +100,6 @@ public class MenuActivity extends AppCompatActivity
             public void onClick(View view) {
 
 
-                //dodaj przykładowe dane
-                //   insertSomeEvents();
 
              mDbAdapter= eventRepository.openDb();
 
@@ -337,35 +331,4 @@ public class MenuActivity extends AppCompatActivity
         notificationManager.notify(0, noti);
 
     }
-/*
-    @Override
-    protected void onPause() {
-        super.onPause();
-        dismissSplashScreen();
-    }
-
-    private void showSplashScreen() {
-        splashDialog = new Dialog(this, R.style.splash_screen);
-        splashDialog.setContentView(R.layout.activity_splash);
-        splashDialog.setCancelable(false);
-        splashDialog.show();
-    }
-
-    private void dismissSplashScreen() {
-        if (splashDialog != null) {
-            splashDialog.dismiss();
-            splashDialog = null;
-        }
-    }
-    @Override
-    public void run() {
-        handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    dismissSplashScreen();
-                                }
-                            }, 5000
-        );
-    }
-    */
 }
